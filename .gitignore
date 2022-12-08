@@ -1,25 +1,25 @@
 .idea
 .vscode
 node_modules
-package-lock.json
-yarn.lock
-
-#public
-/public
 
 # testing
 /coverage
 
 # production
 /build
+/dist
 
-# misc
-.DS_Store
+# local env files
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+
+# misc
+.DS_Store
