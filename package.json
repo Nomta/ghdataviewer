@@ -2,7 +2,9 @@
   "name": "ghdataviewer",
   "version": "1.0.0",
   "description": "Github data viewer",
-  "scripts": {},
+  "scripts": {
+	  "start": "node index"
+  },
   "keywords": [],
   "author": "Nomta",
   "license": "ISC",

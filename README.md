@@ -8,3 +8,7 @@ Github data viewer.
 npm install
 ```
 
+## Run in development mode
+
+```
+npm start
