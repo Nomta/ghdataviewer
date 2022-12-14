@@ -30,6 +30,7 @@ module.exports.oauthCallback = async function oauthCallback(ctx, next) {
       return;
     }
 
-    ctx.body = data;
+    ctx.status = 200;
+    ctx.body = { status: 'ok', ...data };
   })(ctx, next);
 };

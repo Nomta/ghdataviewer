@@ -16,6 +16,7 @@ function mapGithubUserProfile(profile) {
   return {
     username: profile.displayName || profile.username,
     url: profile.profileUrl,
-    avatar: profile.photos?.[0].value
+    avatar: profile.photos?.[0].value,
+    provider: 'github',
   }
 }

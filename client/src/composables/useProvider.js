@@ -1,6 +1,8 @@
 import { ref, provide, readonly } from 'vue'
 import { useStorage } from '@/composables/useStorage'
 
+/** Провайдеры */
+
 export const useProvider = (
   key,
   initialValue,
@@ -11,6 +13,8 @@ export const useProvider = (
     (value) => item.value = value
   ])
 }
+
+/** В связке с localStorage */
 
 export const useStorageProvider = (key) => {
   useProvider(key, null, useStorage(key))

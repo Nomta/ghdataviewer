@@ -1,6 +1,8 @@
 import { ref, watch, onMounted } from 'vue'
 import { Storage } from '@/services/storage'
 
+/** Привязка к localStorage */
+
 export const useStorage = (key) => {
   const item = ref(null)
 
