@@ -1,6 +1,6 @@
-import { get, post } from '@/services/apiRequest'
-import { AuthError } from '@/errors/AuthError.js'
-import { OAUTH_PATH, OAUTH_CALLBACK_PATH } from './apiPaths.js'
+import { get, post } from './request'
+import { OAUTH_PATH, OAUTH_CALLBACK_PATH } from './endpoints'
+import { AuthError } from '@/errors/AuthError'
 
 export class OAuthApi {
 
@@ -10,7 +10,7 @@ export class OAuthApi {
     }
 
     return get(`${OAUTH_PATH}/${provider}`).then((response) => {
-      if (response.status !== 'ok' || !response.location) {
+      if (response.status !== 200 || !response.location) {
         throw new AuthError
       }
       return response
@@ -23,7 +23,7 @@ export class OAuthApi {
     }
 
     return post(`${OAUTH_CALLBACK_PATH}?code=${code}`, { provider }).then((response) => {
-      if (response.status !== 'ok' || !response.accessToken) {
+      if (response.status !== 200 || !response.accessToken) {
         throw new AuthError
       }
       return response

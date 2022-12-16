@@ -2,18 +2,16 @@
   <ElContainer>
     <ElMain class="header">
       <PageLogo />
-      <ProfileLabel v-if="profile" :text="profile.username" :image="profile.avatar"
-        :link="{ text: 'Профиль на Github', href: profile.url }" />
+      <ProfileLabel v-if="mappedProfile" :profile="mappedProfile" />
       <slot name="auth" />
     </ElMain>
   </ElContainer>
 </template>
 
 <script>
-import { inject, toRefs } from 'vue'
+import { inject, computed } from 'vue'
 import PageLogo from '@/components/PageLogo'
 import ProfileLabel from '@/components/ProfileLabel'
-import LogoutButton from '@/components/LogoutButton'
 
 export default {
   name: 'PageHeader',
@@ -21,16 +19,20 @@ export default {
   components: {
     PageLogo,
     ProfileLabel,
-    LogoutButton,
   },
-
-  emits: ['logout'],
 
   setup() {
     const [profile] = inject('profile')
 
+    const mappedProfile = computed(() => ({
+      text: profile.value.username,
+      image: profile.value.avatar,
+      url: profile.value.url,
+      linkText: 'Профиль на Github',
+    }))
+
     return {
-      profile,
+      mappedProfile,
     }
   }
 }
@@ -41,5 +43,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--el-box-shadow-light);
 }
 </style>

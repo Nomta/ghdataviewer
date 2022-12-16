@@ -11,7 +11,7 @@ module.exports.oauth = async function oauth(ctx, next) {
 
   ctx.status = 200;
   ctx.body = {
-    status: 'ok',
+    status: 200,
     location: ctx.response.get('location')
   };
 
@@ -31,6 +31,6 @@ module.exports.oauthCallback = async function oauthCallback(ctx, next) {
     }
 
     ctx.status = 200;
-    ctx.body = { status: 'ok', ...data };
+    ctx.body = { status: 200, ...data };
   })(ctx, next);
 };

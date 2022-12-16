@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { OAuthApi } from '@/api/OAuthApi'
+import { OAuthApi } from '@/api/oauth'
 
 export default {
   name: 'AuthForm',

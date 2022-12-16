@@ -6,7 +6,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/HomeView.vue'),
+    component: () => import(/* webpackChunkName: "home" */ '@/views/ProfilesView.vue'),
     meta: { layout: MainLayout, requiresAuth: true },
   },
   {
@@ -14,6 +14,7 @@ const routes = [
     name: 'profiles',
     component: () => import(/* webpackChunkName: "profiles" */ '@/views/ProfilesView.vue'),
     meta: { layout: MainLayout, requiresAuth: true },
+    alias: '/'
   },
   {
     path: '/profiles/:profileId',
@@ -27,11 +28,12 @@ const routes = [
     name: 'oauth',
     component: () => import(/* webpackChunkName: "oauth" */ '@/views/AuthView.vue'),
     beforeEnter: noRequireAuth,
-    children: [{
-      path: '/oauth/:provider',
-      name: 'oauthp',
-      component: () => import(/* webpackChunkName: "oauthp" */ '@/components/AuthService.vue'),
-    }]
+  },
+  {
+    path: '/oauth/:provider',
+    name: 'oauthp',
+    component: () => import(/* webpackChunkName: "oauthp" */ '@/views/AuthServiceView.vue'),
+    beforeEnter: noRequireAuth,
   },
   {
     path: '/:pathMatch(.*)*',
