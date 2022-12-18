@@ -1,19 +1,33 @@
 <template>
-  <ElCard class="box-card">
-    <template #header>
-      <div class="card-header">
-        <slot />
-        <ElButton class="button" text>Перейти</ElButton>
-      </div>
-    </template>
-  </ElCard>
+  <VCard class="d-flex">
+    <VCardItem>
+      <ProfileLabel :profile="profile" />
+    </VCardItem>
+    <VCardActions class="px-10 text-center ml-auto">
+      <VBtn color="success">
+        <IconGithub />&nbsp;
+        Перейти
+      </VBtn>
+    </VCardActions>
+  </VCard>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import ProfileLabel from '@/components/ProfileLabel'
 
 export default {
   name: 'ProfileCard',
+
+  components: {
+    ProfileLabel,
+  },
+
+  props: {
+    profile: {
+      type: Object,
+      required: true
+    },
+  },
 }
 </script>
 
@@ -22,5 +36,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.button {
+  margin-top: 0.5rem;
 }
 </style>

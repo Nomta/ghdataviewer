@@ -1,7 +1,7 @@
 <template>
-  <div class="logo">
-    <RouterLink to="/">
-      <h1 class="logo__title">Github Viewer</h1>
+  <div class="flex-grow-1">
+    <RouterLink to="/" class="text-white">
+      Github Viewer
     </RouterLink>
   </div>
 </template>
@@ -11,13 +11,3 @@ export default {
   name: 'Logo'
 }
 </script>
-
-<style scoped>
-.logo {
-  flex-grow: 1;
-}
-
-.logo__title {
-  color: var(--el-color-primary);
-}
-</style>

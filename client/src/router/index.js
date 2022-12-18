@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { requireAuth, noRequireAuth } from './guards'
-import MainLayout from '@/components/MainLayout.vue'
+import MainLayout from '@/layouts/MainLayout.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
 
 const routes = [
   {
@@ -27,12 +28,14 @@ const routes = [
     path: '/oauth',
     name: 'oauth',
     component: () => import(/* webpackChunkName: "oauth" */ '@/views/AuthView.vue'),
+    meta: { layout: AuthLayout },
     beforeEnter: noRequireAuth,
   },
   {
     path: '/oauth/:provider',
     name: 'oauthp',
     component: () => import(/* webpackChunkName: "oauthp" */ '@/views/AuthServiceView.vue'),
+    meta: { layout: AuthLayout },
     beforeEnter: noRequireAuth,
   },
   {

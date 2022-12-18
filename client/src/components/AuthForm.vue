@@ -1,25 +1,30 @@
 <template>
-  <ElContainer>
-    <ElMain>
-      <ElCard>
-        <template #header>
-          <div class="card-header">
-            <h1>Авторизация</h1>
-          </div>
-        </template>
-        <ElButton type="primary" @click="getOAuthLink('github')">
-          <IconGithub />&nbsp;Войти через Github
-        </ElButton>
-      </ElCard>
-    </ElMain>
-  </ElContainer>
+  <VCard class="card">
+    <VCardItem class="px-10">
+      <div class="card-header text-center">
+        <h1>Авторизация</h1>
+      </div>
+    </VCardItem>
+
+    <VDivider />
+    <VCardActions class="px-10 text-center">
+      <VBtn color="success" @click="getOAuthLink('github')">
+        <IconGithub />&nbsp;
+        Войти через Github
+      </VBtn>
+    </VCardActions>
+  </VCard>
 </template>
 
 <script>
 import { OAuthApi } from '@/api/oauth'
+import IconGithub from '@/components/icons/IconGithub.vue'
 
 export default {
   name: 'AuthForm',
+  components: {
+    IconGithub,
+  },
 
   setup() {
     const getOAuthLink = (provider) => {
@@ -33,3 +38,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

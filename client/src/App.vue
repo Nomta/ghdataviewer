@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import PageLayout from '@/components/PageLayout.vue'
-import AuthProvider from '@/components/AuthProvider.vue'
+import PageLayout from '@/layouts/PageLayout.vue'
+import AuthProvider from '@/providers/AuthProvider.vue'
 import { useRegister } from '@/composables/useRegister'
 
 export default {

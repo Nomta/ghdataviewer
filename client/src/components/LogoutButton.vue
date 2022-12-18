@@ -1,12 +1,18 @@
 <template>
-  <ElButton type="primary" @click="logout">
+  <VBtn type="primary" @click="logout">
     <IconLogout />&nbsp;Выйти
-  </ElButton>
+  </VBtn>
 </template>
 
 <script>
+import IconLogout from '@/components/icons/IconLogout'
+
 export default {
   name: 'LogoutButton',
+
+  components: {
+    IconLogout,
+  },
 
   emits: ['logout'],
 
@@ -21,3 +27,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -4,7 +4,11 @@
       <slot />
     </component>
   </template>
-  <slot v-else />
+
+  <template v-else>
+    <slot />
+  </template>
+
 </template>
 
 <script>

@@ -1,11 +1,14 @@
 <template>
-  <ElContainer>
-    <ElMain class="header">
-      <PageLogo />
+  <VToolbar color="grey-darken-4">
+    <VContainer class="d-flex align-center">
+      <VToolbarTitle>
+        <PageLogo />
+      </VToolbarTitle>
+
       <ProfileLabel v-if="mappedProfile" :profile="mappedProfile" />
       <slot name="auth" />
-    </ElMain>
-  </ElContainer>
+    </VContainer>
+  </VToolbar>
 </template>
 
 <script>
@@ -43,6 +46,5 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--el-box-shadow-light);
 }
 </style>

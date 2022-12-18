@@ -1,11 +1,7 @@
 <template>
   <ul>
-    <li v-for="user in users" :key="user.id" class="list-item">
-      <ProfileCard :profile="user">
-        <template #default>
-          <ProfileLabel :profile="user" />
-        </template>
-      </ProfileCard>
+    <li v-for="user in users" :key="user.id" class="mb-2">
+      <ProfileCard :profile="user" />
     </li>
   </ul>
 </template>
@@ -15,10 +11,13 @@ import { computed } from 'vue'
 import { useFetch } from '@/composables/useFetch'
 import { GithubApi } from '@/api/github'
 import ProfileCard from '@/components/ProfileCard'
-import ProfileLabel from '@/components/ProfileLabel'
 
 export default {
   name: 'ProfilesView',
+
+  components: {
+    ProfileCard,
+  },
 
   setup() {
     const { data, fetchData, error, loading } = useFetch(GithubApi.getUsers)
@@ -36,9 +35,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.list-item {
-  margin-bottom: 0.75rem;
-}
-</style>

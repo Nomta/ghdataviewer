@@ -1,11 +1,13 @@
 <template>
   <div class="profile-label">
-    <ElAvatar v-if="profile.image" :src="profile.image" />
+    <VAvatar v-if="profile.image">
+      <VImg :src="profile.image" />
+    </VAvatar>
     <div class="profile-label__text">
       <div class="profile-label__title">{{ profile.text }}</div>
-      <ElLink v-if="profile.url" :href="profile.url" target="_blank">
+      <a v-if="profile.url" :href="profile.url" class="link" target="_blank">
         {{ profile.linkText ?? profile.url }}
-      </ElLink>
+      </a>
     </div>
   </div>
 </template>
@@ -36,7 +38,20 @@ export default {
 }
 
 .profile-label__title {
+  margin-top: 0.75em;
+  line-height: 0.5;
   text-transform: capitalize;
   font-weight: bold;
+}
+
+.link {
+  font-size: 0.75em;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.link:hover {
+  color: #4CAF50;
+  opacity: 1;
 }
 </style>

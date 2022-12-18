@@ -1,5 +1,5 @@
 <template>
-  <div class="loading">Идет запрос...</div>
+  <div class="auth-service">Идет запрос...</div>
 </template>
 
 <script>
@@ -26,8 +26,8 @@ export default {
 </script>
 
 <style>
-.loading {
-  padding-top: 20vh;
+.auth-service {
+  padding-top: 10vh;
   font-size: 2rem;
   display: flex;
   justify-content: center;
