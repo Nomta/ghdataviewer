@@ -6,6 +6,9 @@ export function useFetch(fetcher) {
   const error = ref(null)
 
   const fetchData = (...params) => {
+    if (loading.value) {
+      return
+    }
     loading.value = true
     data.value = null
     error.value = null

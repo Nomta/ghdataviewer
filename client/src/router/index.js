@@ -15,7 +15,7 @@ const routes = [
     name: 'profiles',
     component: () => import(/* webpackChunkName: "profiles" */ '@/views/ProfilesView.vue'),
     meta: { layout: MainLayout, requiresAuth: true },
-    alias: '/'
+    // alias: '/'
   },
   {
     path: '/profiles/:profileId',

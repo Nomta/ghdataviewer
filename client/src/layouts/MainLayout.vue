@@ -1,5 +1,5 @@
 <template>
-  <VApp class="bg-grey-lighten-5">
+  <VApp class="bg-grey-lighten-4">
     <PageHeader>
       <template #auth>
         <LogoutButton @click="logout" />
