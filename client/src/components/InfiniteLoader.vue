@@ -1,20 +1,34 @@
 <template>
-  <slot />
-  <div v-intersect="intersect"></div>
+  <IntersectionObserver @intersect="fetchData">
+    <slot :data="data" />
+  </IntersectionObserver>
+  <div v-if="loading">LOADING...</div>
 </template>
 
 <script>
+import IntersectionObserver from '@/components/IntersectionObserver'
+
 export default {
   name: 'InfiniteLoader',
 
-  emits: ['intersect'],
+  components: {
+    IntersectionObserver,
+  },
 
-  setup(props, { emit }) {
-    const intersect = () => {
-      emit('intersect')
-    }
+  props: {
+    loader: {
+      type: Function,
+      required: true
+    },
+    limit: {
+      type: Number,
+      default: 0
+    },
+  },
 
-    return { intersect }
+  setup({ loader, limit }) {
+    // const { data, error, loading, fetchData } = toRefs(loader(limit))
+    return loader(limit)
   }
 
 }

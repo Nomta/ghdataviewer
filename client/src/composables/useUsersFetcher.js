@@ -1,5 +1,5 @@
 
-import { reactive, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { useFetch } from '@/composables/useFetch'
 import { GithubApi } from '@/api/github'
 
@@ -11,20 +11,20 @@ const mapUser = (user) => ({
   linkText: 'Профиль на Github',
 })
 
-export const fetchUsers = (limit) => {
-  const users = reactive([])
-  const since = computed(() => users.length ? users.at(-1).id : 0)
+export const useUsersFetcher = (limit) => {
+  const users = ref([])
+  const since = computed(() => users.value.length ? users.value.at(-1).id : 0)
   const query = computed(() => `?since=${since.value}&per_page=${limit}`)
 
   const { data, fetchData, error, loading } = useFetch(GithubApi.getUsers)
 
   watchEffect(() => {
     if (data.value) {
-      users.push(...data.value.map(mapUser))
+      users.value = users.value.concat(data.value.map(mapUser))
     }
   })
 
-  const load = async () => {
+  const fetchUsers = async () => {
     try {
       await fetchData(query.value)
     } catch (err) {
@@ -32,5 +32,10 @@ export const fetchUsers = (limit) => {
     }
   }
 
-  return { users, error, loading, load }
-};
+  return {
+    data: users,
+    error,
+    loading,
+    fetchData: fetchUsers
+  }
+}

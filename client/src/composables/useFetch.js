@@ -19,7 +19,5 @@ export function useFetch(fetcher) {
       .finally(() => loading.value = false)
   }
 
-  return {
-    data, fetchData, loading, error,
-  }
+  return { data, error, loading, fetchData }
 }

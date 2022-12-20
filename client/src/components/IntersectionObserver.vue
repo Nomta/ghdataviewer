@@ -20,6 +20,7 @@ export default {
 
   setup(props, { emit }) {
     const root = ref(null)
+
     const observer = new IntersectionObserver(([entry]) => {
       if (entry && entry.isIntersecting) {
         emit('intersect')

@@ -1,15 +1,15 @@
 <template>
-  <InfiniteLoader @intersect="load">
-    <ProfileList :profiles="users" />
+  <InfiniteLoader :loader="useUsersFetcher" :limit="limit" v-slot="{ data }">
+    <ProfileList :profiles="data" />
   </InfiniteLoader>
 </template>
 
 <script>
 import ProfileList from '@/components/ProfileList'
 import InfiniteLoader from '@/components/InfiniteLoader'
-import { fetchUsers } from '@/composables/fetchUsers'
+import { useUsersFetcher } from '@/composables/useUsersFetcher'
 
-const LIMIT = 30
+const LIMIT_OF_ENTRIES_PER_PAGE = 5
 
 export default {
   name: 'ProfilesView',
@@ -20,8 +20,10 @@ export default {
   },
 
   setup() {
-    // const { users, error, loading, load } = toRefs(fetchUsers(LIMIT))
-    return fetchUsers(LIMIT)
+    return {
+      useUsersFetcher,
+      limit: LIMIT_OF_ENTRIES_PER_PAGE
+    }
   }
 }
 </script>

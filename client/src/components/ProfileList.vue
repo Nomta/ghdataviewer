@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul v-if="profiles.length">
     <li v-for="profile in profiles" :key="profile.id" class="mb-2">
       <ProfileCard :profile="profile" />
     </li>
