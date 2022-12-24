@@ -1,7 +1,13 @@
-
-import { ref, computed, watchEffect } from 'vue'
-import { useFetch } from '@/composables/useFetch'
+import { computed } from 'vue'
+import { useInfiniteFetch } from '@/composables/useInfiniteFetch'
 import { GithubApi } from '@/api/github'
+
+const getReactiveQuery = (users, limit) => {
+  const since = computed(() => users.value.length ? users.value.at(-1).id : 0)
+  const query = computed(() => `?since=${since.value}&per_page=${limit}`)
+
+  return [query]
+}
 
 const mapUser = (user) => ({
   id: user.id,
@@ -12,30 +18,14 @@ const mapUser = (user) => ({
 })
 
 export const useUsersFetcher = (limit) => {
-  const users = ref([])
-  const since = computed(() => users.value.length ? users.value.at(-1).id : 0)
-  const query = computed(() => `?since=${since.value}&per_page=${limit}`)
 
-  const { data, fetchData, error, loading } = useFetch(GithubApi.getUsers)
-
-  watchEffect(() => {
-    if (data.value) {
-      users.value = users.value.concat(data.value.map(mapUser))
-    }
-  })
-
-  const fetchUsers = async () => {
-    try {
-      await fetchData(query.value)
-    } catch (err) {
-      console.error(err)
-    }
-  }
+  const { data, fetchData, error, loading } = useInfiniteFetch(GithubApi.getUsers, getReactiveQuery, limit)
+  const updatedData = computed(() => data.value.map(mapUser))
 
   return {
-    data: users,
+    data: updatedData,
     error,
     loading,
-    fetchData: fetchUsers
+    fetchData
   }
 }

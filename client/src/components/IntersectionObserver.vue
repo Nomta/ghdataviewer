@@ -1,6 +1,6 @@
 <template>
   <slot />
-  <div ref="root"></div>
+  <div ref="target"></div>
 </template>
 
 <script>
@@ -19,16 +19,16 @@ export default {
   emits: ['intersect'],
 
   setup(props, { emit }) {
-    const root = ref(null)
+    const target = ref(null)
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry && entry.isIntersecting) {
-        emit('intersect')
+        emit('intersect', entry)
       }
     }, props.options)
 
     onMounted(() => {
-      observer.observe(root.value)
+      observer.observe(target.value)
     })
 
     onUnmounted(() => {
@@ -36,7 +36,7 @@ export default {
     })
 
     return {
-      root
+      target
     }
   }
 }

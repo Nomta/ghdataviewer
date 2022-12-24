@@ -1,11 +1,15 @@
 <template>
-  <IntersectionObserver @intersect="fetchData">
-    <slot :data="data" />
+  <IntersectionObserver @intersect="intersect">
+    <div ref="container">
+      <slot :data="data" />
+    </div>
+    <!-- TARGET -->
   </IntersectionObserver>
   <div v-if="loading">LOADING...</div>
 </template>
 
 <script>
+import { ref, toRefs } from 'vue'
 import IntersectionObserver from '@/components/IntersectionObserver'
 
 export default {
@@ -27,8 +31,20 @@ export default {
   },
 
   setup({ loader, limit }) {
-    // const { data, error, loading, fetchData } = toRefs(loader(limit))
-    return loader(limit)
+    const container = ref(null)
+    const { data, error, loading, fetchData } = loader(limit)
+
+    const intersect = async (entry) => {
+      await fetchData()
+
+      while (container.value?.getBoundingClientRect()?.height < entry.rootBounds?.height) {
+        await fetchData()
+      }
+    }
+    return {
+      intersect,
+      data, error, loading, fetchData, container
+    }
   }
 
 }
