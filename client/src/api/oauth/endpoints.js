@@ -1,2 +1,2 @@
-export const OAUTH_PATH = '/oauth'
-export const OAUTH_CALLBACK_PATH = '/oauth_callback'
+export const OAUTH_PATH = '/api/oauth'
+export const OAUTH_CALLBACK_PATH = '/api/oauth_callback'

@@ -4,7 +4,7 @@ import { AuthError } from '@/errors/AuthError'
 import { GITHUB_URL } from './endpoints'
 
 export function get(url) {
-  return request.get(`${GITHUB_URL}${url}`, getParams())
+  return request.get(new URL(url, GITHUB_URL), getParams())
 }
 
 function getParams() {

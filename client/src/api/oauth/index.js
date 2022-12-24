@@ -9,12 +9,12 @@ export class OAuthApi {
       throw new AuthError
     }
 
-    return get(`${OAUTH_PATH}/${provider}`).then((response) => {
-      if (response.status !== 200 || !response.location) {
+    return get(`${OAUTH_PATH}/${provider}`).then(({ data, ...response }) => {
+      if (response.status !== 200 || !data.location) {
         throw new AuthError
       }
-      return response
-    })
+      return data
+    }).catch(throwError)
   }
 
   static login(code, provider) {
@@ -22,11 +22,15 @@ export class OAuthApi {
       throw new AuthError
     }
 
-    return post(`${OAUTH_CALLBACK_PATH}?code=${code}`, { provider }).then((response) => {
-      if (response.status !== 200 || !response.accessToken) {
+    return post(`${OAUTH_CALLBACK_PATH}?code=${code}`, { provider }).then(({ data, ...response }) => {
+      if (response.status !== 200 || !data.accessToken) {
         throw new AuthError
       }
-      return response
-    })
+      return data
+    }).catch(throwError)
   }
+}
+
+function throwError(error) {
+  throw new AuthError(error)
 }
