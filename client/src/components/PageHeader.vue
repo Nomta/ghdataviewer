@@ -4,7 +4,6 @@
       <VToolbarTitle>
         <PageLogo />
       </VToolbarTitle>
-
       <ProfileLabel v-if="mappedProfile" :profile="mappedProfile" />
       <slot name="auth" />
     </VContainer>
@@ -27,7 +26,7 @@ export default {
   setup() {
     const [profile] = inject('profile')
 
-    const mappedProfile = computed(() => ({
+    const mappedProfile = computed(() => profile.value && ({
       text: profile.value.username,
       image: profile.value.avatar,
       url: profile.value.url,

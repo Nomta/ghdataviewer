@@ -1,16 +1,24 @@
 import { get } from './request'
-import { GITHUB_USERS_PATH } from './endpoints'
 import { RequestError } from '@/errors/RequestError'
+import {
+  GITHUB_USERS_PATH,
+  GITHUB_USER_REPOS_PATH,
+  GITHUB_SEARCH_USER_PATH,
+  GITHUB_USERS_PER_PAGE_PATH,
+} from './endpoints'
 
 
 export class GithubApi {
-  static getUsers(query = '') {
-    return get(`${GITHUB_USERS_PATH}${query}`)
+  static getUsers() {
+    return get(GITHUB_USERS_PATH)
       .then(response => response.data)
       .catch(throwError)
   }
-  static getInfiniteUserList(query = '') {
-    return getInfiniteDataList(`${GITHUB_USERS_PATH}${query}`)
+  static getInfiniteUserList(limit) {
+    const url = limit
+      ? `${GITHUB_USERS_PER_PAGE_PATH}${limit}`
+      : GITHUB_USERS_PATH
+    return getInfiniteDataList(url)
   }
   static getUserRepos(name) {
     return get(GITHUB_USER_REPOS_PATH.replace('{name}', name))

@@ -1,30 +1,24 @@
-import { ref, watchEffect } from 'vue'
-import { useFetch } from '@/composables/useFetch'
+import { ref } from 'vue'
 
-export const useInfiniteFetch = (fetcher, reactiveParamsSetter, ...params) => {
+export function useInfiniteFetch(fetcher) {
   const data = ref([])
-  const reactiveParams = reactiveParamsSetter(data, ...params)
+  const loading = ref(false)
+  const error = ref(null)
 
-  const {
-    data: reactiveData,
-    fetchData: fetchReactiveData,
-    ...attrs
-  } = useFetch(fetcher)
-
-  watchEffect(() => {
-    if (reactiveData.value) {
-      data.value = data.value.concat(reactiveData.value)
+  const fetchData = () => {
+    if (loading.value) {
+      return
     }
-  })
+    loading.value = true
+    error.value = null
 
-  const fetchData = async () => {
-    try {
-      await fetchReactiveData(...reactiveParams.map(param => param.value))
-    } catch (err) {
-      console.error(err)
-    }
+    return fetcher.next()
+      .then(response => {
+        data.value = data.value.concat(response.value)
+      })
+      .catch(error => error.value = error)
+      .finally(() => loading.value = false)
   }
 
-  return { data, fetchData, ...attrs }
+  return { data, error, loading, fetchData }
 }
-
