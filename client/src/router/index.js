@@ -7,8 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/ProfilesView.vue'),
-    meta: { layout: MainLayout, requiresAuth: true },
+    redirect: '/profiles',
   },
   {
     path: '/profiles',
