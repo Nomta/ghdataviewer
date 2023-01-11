@@ -14,7 +14,7 @@ export class OAuthApi {
         throw new AuthError
       }
       return data
-    }).catch(throwError)
+    })
   }
 
   static login(code, provider) {
@@ -27,10 +27,6 @@ export class OAuthApi {
         throw new AuthError
       }
       return data
-    }).catch(throwError)
+    })
   }
-}
-
-function throwError(error) {
-  throw new AuthError(error)
 }
