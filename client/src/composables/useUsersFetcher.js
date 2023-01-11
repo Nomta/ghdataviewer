@@ -11,7 +11,7 @@ const mapUser = (user) => ({
 })
 
 export const useUsersFetcher = (limit) => {
-  const fetcher = GithubApi.getInfiniteUserList(limit)
+  const fetcher = GithubApi.getInfiniteUserList({ limit })
   const { data, ...params } = useInfiniteFetch(fetcher)
   const users = computed(() => data.value.map(mapUser))
 
