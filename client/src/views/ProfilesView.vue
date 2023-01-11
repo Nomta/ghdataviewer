@@ -5,8 +5,8 @@
 </template>
 
 <script>
+import InfiniteLoader from '@/components/ui/InfiniteLoader'
 import ProfileList from '@/components/ProfileList'
-import InfiniteLoader from '@/components/InfiniteLoader'
 import { useUsersFetcher } from '@/composables/useUsersFetcher'
 
 const LIMIT_OF_ENTRIES_PER_PAGE = 5

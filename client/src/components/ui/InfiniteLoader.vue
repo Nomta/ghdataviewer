@@ -9,7 +9,7 @@
 
 <script>
 import { ref } from 'vue'
-import IntersectionObserver from '@/components/IntersectionObserver'
+import IntersectionObserver from '@/components/ui/IntersectionObserver'
 import UiLoader from '@/components/ui/UiLoader'
 
 export default {
