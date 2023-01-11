@@ -4,18 +4,20 @@
       <slot :data="data" />
     </div>
   </IntersectionObserver>
-  <div v-if="loading">LOADING...</div>
+  <UiLoader v-if="loading" />
 </template>
 
 <script>
 import { ref } from 'vue'
 import IntersectionObserver from '@/components/IntersectionObserver'
+import UiLoader from '@/components/ui/UiLoader'
 
 export default {
   name: 'InfiniteLoader',
 
   components: {
     IntersectionObserver,
+    UiLoader,
   },
 
   props: {
