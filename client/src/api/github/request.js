@@ -1,30 +1,43 @@
 import request from '@/services/request'
+import { useURL } from '@/services/url'
 import { Storage } from '@/services/storage'
 import { RequestError } from '@/errors/RequestError'
 import { GITHUB_URL } from './endpoints'
-import { mapKeys } from 'lodash'
+import { transform } from 'lodash'
 
-export function get(path, searchParams) {
-  return request.get(createURL(path, mapSearchParams(searchParams)), getParams())
+const createURL = useURL(GITHUB_URL)
+
+const queryMap = { q: 'q', name: 'q', limit: 'per_page' }
+
+
+export async function get(path, searchParams) {
+  try {
+    const response = await request.get(createURL(path, mapSearchParams(searchParams)), getParams())
+    return response
+  }
+  catch (error) {
+    throw new RequestError(error)
+  }
 }
+
 
 export async function* getInfiniteDataList(initialURL, searchParams) {
-  let url = createURL(initialURL, mapSearchParams(searchParams))
-  let response
+  try {
+    let url = createURL(initialURL, mapSearchParams(searchParams))
+    let response
 
-  do {
-    response = await get(url)
-    url = getNextURL(response)
-    yield response.data
+    do {
+      response = await get(url)
+      url = getNextURL(response)
+      yield response.data
+    }
+    while (url)
   }
-  while (url)
+  catch (error) {
+    throw new RequestError(error)
+  }
 }
 
-function getNextURL(response) {
-  const link = response.headers.get('link')
-  const url = link.match(/<([^>]*)>;\s+rel=(["'])?next\2/)?.[1]
-  return url
-}
 
 function getParams() {
   const token = Storage.get('token')
@@ -41,27 +54,16 @@ function getParams() {
   return { headers }
 }
 
-function createURL(path, searchParams) {
-  const url = new URL(path, GITHUB_URL)
-
-  if (searchParams) {
-    const query = new URLSearchParams(searchParams)
-    url.search = query.toString()
-  }
-
+function getNextURL(response) {
+  const link = response.headers.get('link')
+  const url = link.match(/<([^>]*)>;\s+rel=(["'])?next\2/)?.[1]
   return url
 }
 
-const queryMap = {
-  q: 'q',
-  name: 'q',
-  limit: 'per_page'
-}
-
 function mapSearchParams(params) {
-  if (!params) {
-    return
+  if (params) {
+    return transform(params, (map, value, key) => {
+      if (value && key && queryMap[key]) map[queryMap[key]] = value
+    }, {})
   }
-
-  return mapKeys(params, (value, key) => queryMap[key])
 }
