@@ -1,5 +1,5 @@
 <template>
-  <VAutocomplete v-model="select" v-model:search="search" :loading="loading" :items="data" :label="label"
+  <VAutocomplete v-model="select" v-model:search="search" :loading="loading" :items="items" :label="label"
     density="comfortable" hide-no-data />
 </template>
 
@@ -14,7 +14,7 @@ export default {
 
   props: {
     modelValue: {
-      type: Object,
+      type: [Object, String],
       required: true
     },
     loader: {
@@ -25,6 +25,7 @@ export default {
       type: Number,
       default: 10
     },
+    itemTitle: String,
     label: String,
   },
 
@@ -38,11 +39,20 @@ export default {
       set: (value) => emit('update:modelValue', value)
     })
 
-    const { fetchData, ...params } = props.loader()
+    const { fetchData, data, ...params } = props.loader()
+
+    const mapItem = (item) => ({
+      title: item[props.itemTitle],
+      value: item
+    })
 
     const defineParams = (value) => ({
       name: value,
       limit: props.limit,
+    })
+
+    const items = computed(() => {
+      return props.itemTitle ? data.value?.map(mapItem) : data.value
     })
 
     const debouncedFetchData = debounce(fetchData, DELAY)
@@ -63,12 +73,9 @@ export default {
     return {
       search,
       select,
-      ...params /* error, loading, data */
+      items,
+      ...params /* error, loading */
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
