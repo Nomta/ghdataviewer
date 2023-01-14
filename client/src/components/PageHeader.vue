@@ -27,7 +27,7 @@ export default {
     const [profile] = inject('profile')
 
     const mappedProfile = computed(() => profile.value && ({
-      text: profile.value.username,
+      username: profile.value.username,
       image: profile.value.avatar,
       url: profile.value.url,
       linkText: 'Профиль на Github',

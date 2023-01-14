@@ -4,10 +4,12 @@
       <ProfileLabel :profile="profile" />
     </VCardItem>
     <VCardActions class="px-10 text-center ml-auto">
-      <VBtn color="success">
-        <IconGithub />&nbsp;
-        Перейти
-      </VBtn>
+      <RouterLink :to="{ name: 'profileDetail', params: { username: profile.username } }">
+        <VBtn color="success">
+          <IconGithub />&nbsp;
+          Перейти
+        </VBtn>
+      </RouterLink>
     </VCardActions>
   </VCard>
 </template>

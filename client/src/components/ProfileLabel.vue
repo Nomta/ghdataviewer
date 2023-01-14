@@ -4,7 +4,7 @@
       <VImg :src="profile.image" />
     </VAvatar>
     <div class="profile-label__text">
-      <div class="profile-label__title">{{ profile.text }}</div>
+      <div class="profile-label__title">{{ profile.username }}</div>
       <a v-if="profile.url" :href="profile.url" class="link" target="_blank">
         {{ profile.linkText ?? profile.url }}
       </a>

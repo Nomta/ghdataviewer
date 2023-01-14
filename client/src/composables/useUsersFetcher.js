@@ -4,7 +4,7 @@ import { GithubApi } from '@/api/github'
 
 const mapUser = (user) => ({
   id: user.id,
-  text: user.login,
+  username: user.login,
   image: user.avatar_url,
   url: user.html_url,
   linkText: 'Профиль на Github',
