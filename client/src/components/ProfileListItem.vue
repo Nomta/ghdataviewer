@@ -18,7 +18,7 @@
 import ProfileLabel from '@/components/ProfileLabel'
 
 export default {
-  name: 'ProfileCard',
+  name: 'ProfileListItem',
 
   components: {
     ProfileLabel,

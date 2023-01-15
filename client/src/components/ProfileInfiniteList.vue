@@ -1,5 +1,5 @@
 <template>
-  <InfiniteLoader :loader="useUsersFetcher" :limit="limit" v-slot="{ data }">
+  <InfiniteLoader :loader="loader" :limit="limit" v-slot="{ data }">
     <UiDataList :items="data" v-slot="{ item }">
       <ProfileListItem :profile="item" />
     </UiDataList>
@@ -10,7 +10,7 @@
 import InfiniteLoader from '@/components/ui/InfiniteLoader'
 import UiDataList from '@/components/ui/UiDataList'
 import ProfileListItem from '@/components/ProfileListItem'
-import { useUsersFetcher } from '@/composables/useUsersFetcher'
+import { useUsersFetch } from '@/composables/useUsersFetcher'
 
 const LIMIT_OF_ENTRIES_PER_PAGE = 10
 
@@ -25,8 +25,8 @@ export default {
 
   setup() {
     return {
-      useUsersFetcher,
-      limit: LIMIT_OF_ENTRIES_PER_PAGE
+      loader: useUsersFetch,
+      limit: LIMIT_OF_ENTRIES_PER_PAGE,
     }
   }
 }

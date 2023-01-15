@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
 export function useInfiniteFetch(fetcher) {
-  const data = ref([])
+  const data = ref(null)
   const loading = ref(false)
   const error = ref(null)
 
@@ -14,9 +14,9 @@ export function useInfiniteFetch(fetcher) {
 
     return fetcher.next()
       .then(response => {
-        data.value = data.value.concat(response.value)
+        data.value = (data.value || []).concat(response.value)
       })
-      .catch(error => error.value = error)
+      .catch(e => error.value = e)
       .finally(() => loading.value = false)
   }
 

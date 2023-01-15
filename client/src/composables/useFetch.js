@@ -3,7 +3,7 @@ import { ref } from 'vue'
 export function useFetch(fetcher) {
   const loading = ref(false)
   const error = ref(null)
-  const data = ref([])
+  const data = ref(null)
 
   const fetchData = (...params) => {
     if (loading.value) {
@@ -11,11 +11,11 @@ export function useFetch(fetcher) {
     }
     loading.value = true
     error.value = null
-    data.value = []
+    data.value = null
 
     return fetcher(...params)
       .then(response => data.value = response.data)
-      .catch(error => error.value = error)
+      .catch(e => error.value = e)
       .finally(() => loading.value = false)
   }
 

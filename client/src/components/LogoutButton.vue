@@ -1,5 +1,5 @@
 <template>
-  <VBtn type="primary" @click="logout">
+  <VBtn type="primary" class="pr-md-0" @click="logout">
     <IconLogout />&nbsp;Выйти
   </VBtn>
 </template>

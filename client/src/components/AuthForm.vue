@@ -22,6 +22,7 @@ import IconGithub from '@/components/icons/IconGithub.vue'
 
 export default {
   name: 'AuthForm',
+
   components: {
     IconGithub,
   },

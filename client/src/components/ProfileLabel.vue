@@ -46,12 +46,5 @@ export default {
 
 .link {
   font-size: 0.75em;
-  color: inherit;
-  opacity: 0.8;
-}
-
-.link:hover {
-  color: #4CAF50;
-  opacity: 1;
 }
 </style>
