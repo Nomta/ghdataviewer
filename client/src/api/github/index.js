@@ -17,8 +17,8 @@ export class GithubApi {
   static getUser(name) {
     return get(GITHUB_USER_PATH.replace('{name}', name))
   }
-  static getUserRepos(name) {
-    return get(GITHUB_USER_REPOS_PATH.replace('{name}', name))
+  static getUserRepos(name, searchParams) {
+    return get(GITHUB_USER_REPOS_PATH.replace('{name}', name), searchParams)
   }
   static searchUser(searchParams) {
     return get(GITHUB_SEARCH_USER_PATH, searchParams)

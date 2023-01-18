@@ -7,10 +7,9 @@
 <script>
 import UiDataList from '@/components/ui/UiDataList'
 import ReposListItem from '@/components/ReposListItem'
-import { useUserReposFetch } from '@/composables/useUserFetcher'
 
 export default {
-  name: 'reposList',
+  name: 'ReposList',
 
   components: {
     UiDataList,
@@ -18,19 +17,8 @@ export default {
   },
 
   props: {
-    username: {
-      type: Object,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const { fetchData, ...params } = useUserReposFetch()
-    fetchData(props.username)
-
-    return {
-      ...params, /* error, loading, data, */
-    }
+    data: Array,
+    loading: Boolean,
   },
 }
 </script>
