@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex justify-end">
-    <VSelect v-model="select" :items="options" :label="label" density="compact" hide-no-data variant="solo" />
+    <UiSelect v-model="select" :items="options" :label="label" class="select mb-n3" />
   </div>
 </template>
 
 <script>
+import UiSelect from '@/components/ui/UiSelect'
 import { useModel } from '@/composables/useModel'
 
 const options = [
@@ -15,6 +16,10 @@ const options = [
 
 export default {
   name: 'ReposSorter',
+
+  components: {
+    UiSelect,
+  },
 
   props: {
     modelValue: {
