@@ -7,7 +7,12 @@ import { transform } from 'lodash'
 
 const createURL = useURL(GITHUB_URL)
 
-const queryMap = { q: 'q', name: 'q', limit: 'per_page' }
+const queryMap = {
+  q: 'q',
+  name: 'q',
+  limit: 'per_page',
+  sort: 'sort'
+}
 
 
 export async function get(path, searchParams) {
