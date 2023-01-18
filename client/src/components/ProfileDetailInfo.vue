@@ -73,7 +73,7 @@ import IconLocation from '@/components/icons/IconLocation'
 import IconEnvelope from '@/components/icons/IconEnvelope'
 import IconLink from '@/components/icons/IconLink'
 import IconTwitter from '@/components/icons/IconTwitter'
-import { formatNumber } from '@/utils'
+import { formatNumber } from '@/services/format'
 
 const TWITTER_BASE_URL = 'https://twitter.com'
 

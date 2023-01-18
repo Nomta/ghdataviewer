@@ -1,26 +1,24 @@
 <template>
-  <ul v-if="profiles.length">
-    <li v-for="profile in profiles" :key="profile.id" class="mb-2">
-      <ProfileCard :profile="profile" />
-    </li>
-  </ul>
+  <UiDataList :items="data" v-slot="{ item }">
+    <ProfileListItem :profile="item" />
+  </UiDataList>
 </template>
 
 <script>
-import ProfileCard from '@/components/ProfileCard'
+import UiDataList from '@/components/ui/UiDataList'
+import ProfileListItem from '@/components/ProfileListItem'
 
 export default {
   name: 'ProfileList',
 
   components: {
-    ProfileCard,
+    UiDataList,
+    ProfileListItem,
   },
 
   props: {
-    profiles: {
-      type: Array,
-      default: []
-    },
+    data: Array,
+    loading: Boolean,
   },
 }
 </script>

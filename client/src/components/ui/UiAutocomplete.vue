@@ -1,11 +1,12 @@
 <template>
-  <VAutocomplete v-model="select" v-model:search="search" :loading="loading" :items="items" :label="label"
-    density="comfortable" hide-no-data />
+  <VAutocomplete v-model="select" v-model:search="search" :loading="loading" :items="data" :item-title="itemTitle"
+    :label="label" density="comfortable" return-object hide-no-data />
 </template>
 
 <script>
-import { ref, computed, watch, onUnmounted } from 'vue'
+import { ref, watch, onUnmounted } from 'vue'
 import { debounce } from 'lodash'
+import { useModel } from '@/composables/useModel'
 
 const DELAY = 300
 
@@ -32,27 +33,14 @@ export default {
   emits: ['update:modelValue'],
 
   setup(props, { emit }) {
+    const select = useModel(props, emit)
     const search = ref(null)
 
-    const select = computed({
-      get: () => props.modelValue,
-      set: (value) => emit('update:modelValue', value)
-    })
-
-    const { fetchData, data, ...params } = props.loader()
-
-    const mapItem = (item) => ({
-      title: item[props.itemTitle],
-      value: item
-    })
+    const { fetchData, ...params } = props.loader()
 
     const defineParams = (value) => ({
       name: value,
       limit: props.limit,
-    })
-
-    const items = computed(() => {
-      return props.itemTitle ? data.value?.map(mapItem) : data.value
     })
 
     const debouncedFetchData = debounce(fetchData, DELAY)
@@ -73,7 +61,6 @@ export default {
     return {
       search,
       select,
-      items,
       ...params /* error, loading */
     }
   }

@@ -4,21 +4,21 @@
       <ProfileDetail :username="username" />
     </VCol>
     <VCol cols="12" md="9" class="pb-0 pl-md-10">
-      <ReposList :username="username" />
+      <ReposView :username="username" />
     </VCol>
   </VRow>
 </template>
 
 <script>
 import ProfileDetail from '@/components/ProfileDetail'
-import ReposList from '@/components/ReposList'
+import ReposView from '@/components/ReposView'
 
 export default {
   name: 'ProfileDetailView',
 
   components: {
     ProfileDetail,
-    ReposList,
+    ReposView,
   },
 
   props: {
@@ -29,7 +29,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>
