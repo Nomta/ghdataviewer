@@ -1,6 +1,6 @@
-# MERN App
+# Github data viewer
 
-Github data viewer.
+Full stack app built with Node.js, Koa and Vue 3.
 
 ## Project setup
 
