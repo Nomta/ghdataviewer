@@ -1,5 +1,5 @@
 <template>
-  <ReposSorter v-model="select" />
+  <ReposSorter v-if="data?.length > 1" v-model="select" />
   <ReposList :data="data" :loading="loading" />
 </template>
 
