@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-end">
-    <UiAutocomplete v-model="profile" :loader="loader" :label="label" item-title="login" class="autocomplete" />
+    <UiAutocomplete v-model="profile" :loader="loader" :label="label" item-title="login" class="select mb-n3" />
   </div>
 </template>
 
@@ -38,7 +38,9 @@ export default {
 </script>
 
 <style scoped>
-.autocomplete {
-  max-width: 34rem;
+@media (min-width: 768px) {
+  .select {
+    max-width: 24rem;
+  }
 }
 </style>

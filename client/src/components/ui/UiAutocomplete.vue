@@ -1,6 +1,6 @@
 <template>
   <VAutocomplete v-model="select" v-model:search="search" :loading="loading" :items="data" :item-title="itemTitle"
-    :label="label" density="comfortable" return-object hide-no-data />
+    :label="label" density="compact" return-object hide-no-data variant="solo" />
 </template>
 
 <script>
