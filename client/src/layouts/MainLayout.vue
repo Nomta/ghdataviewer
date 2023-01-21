@@ -15,6 +15,7 @@
 import { inject } from 'vue'
 import PageHeader from '@/components/PageHeader'
 import LogoutButton from '@/components/LogoutButton'
+import { LOGOUT } from '@/composables/useRegister'
 
 export default {
   name: 'MainLayout',
@@ -25,7 +26,7 @@ export default {
   },
 
   setup() {
-    const [logout] = inject('logout')
+    const [logout] = inject(LOGOUT)
 
     return {
       logout,

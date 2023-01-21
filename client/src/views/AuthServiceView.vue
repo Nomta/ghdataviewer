@@ -6,6 +6,7 @@
 import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
 import { OAuthApi } from '@/api/oauth'
+import { LOGIN } from '@/composables/useRegister'
 
 export default {
   name: 'AuthServiceView',
@@ -15,7 +16,7 @@ export default {
     const code = computed(() => route.query.code)
     const provider = computed(() => route.params.provider)
 
-    const [{ value: login }] = inject('login')
+    const [{ value: login }] = inject(LOGIN)
 
     if (code.value)
       OAuthApi

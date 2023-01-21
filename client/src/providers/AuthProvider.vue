@@ -5,15 +5,16 @@
 <script>
 import { inject } from 'vue'
 import { useRouter } from 'vue-router'
+import { LOGIN, LOGOUT, PROFILE, TOKEN } from '@/composables/useRegister'
 
 export default {
   name: 'AuthProvider',
 
   setup() {
-    const [, setToken] = inject('token')
-    const [, setProfile] = inject('profile')
-    const [, setLogin] = inject('login')
-    const [, setLogout] = inject('logout')
+    const [, setToken] = inject(TOKEN)
+    const [, setProfile] = inject(PROFILE)
+    const [, setLogin] = inject(LOGIN)
+    const [, setLogout] = inject(LOGOUT)
 
     const router = useRouter()
 

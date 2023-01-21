@@ -14,6 +14,7 @@
 import { inject, computed } from 'vue'
 import PageLogo from '@/components/PageLogo'
 import ProfileLabel from '@/components/ProfileLabel'
+import { PROFILE } from '@/composables/useRegister'
 
 export default {
   name: 'PageHeader',
@@ -24,7 +25,7 @@ export default {
   },
 
   setup() {
-    const [profile] = inject('profile')
+    const [profile] = inject(PROFILE)
 
     const mappedProfile = computed(() => profile.value && ({
       username: profile.value.username,
