@@ -5,21 +5,21 @@
         <slot :item="item" />
       </li>
     </ul>
-    <UiNoData v-else />
+    <UiPlaceholder v-else />
   </template>
   <UiLoader v-else-if="loading" />
 </template>
 
 <script>
 import UiLoader from '@/components/ui/UiLoader'
-import UiNoData from '@/components/ui/UiNoData'
+import UiPlaceholder from '@/components/ui/UiPlaceholder'
 
 export default {
   name: 'UiDataList',
 
   components: {
     UiLoader,
-    UiNoData,
+    UiPlaceholder,
   },
 
   props: {

@@ -1,13 +1,13 @@
 <template>
   <UiLoader v-if="loading" />
   <ProfileDetailInfo v-else-if="data" :profile="data" />
-  <UiNoData v-else />
+  <UiPlaceholder v-else />
 </template>
 
 <script>
 import ProfileDetailInfo from '@/components/ProfileDetailInfo'
 import UiLoader from '@/components/ui/UiLoader'
-import UiNoData from '@/components/ui/UiNoData'
+import UiPlaceholder from '@/components/ui/UiPlaceholder'
 import { useUserFetch } from '@/composables/useUserFetcher'
 
 export default {
@@ -16,7 +16,7 @@ export default {
   components: {
     ProfileDetailInfo,
     UiLoader,
-    UiNoData,
+    UiPlaceholder,
   },
 
   props: {
