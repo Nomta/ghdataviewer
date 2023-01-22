@@ -5,9 +5,9 @@
 
 <script>
 import { ref, watch } from 'vue'
-import ReposList from '@/components/ReposList'
-import ReposSorter from '@/components/ReposSorter'
-import { useUserReposFetch } from '@/composables/useUserFetcher'
+import ReposList from '../components/ReposList'
+import ReposSorter from '../components/ReposSorter'
+import { useUserReposFetch } from '../composables/useUserFetcher'
 
 export default {
   name: 'ReposView',

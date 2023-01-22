@@ -1,7 +1,7 @@
 <template>
   <InfiniteLoader :loader="loader" :limit="limit" v-slot="{ data }">
     <UiDataList :items="data" v-slot="{ item }">
-      <ProfileListItem :profile="item" />
+      <UserListItem :user="item" />
     </UiDataList>
   </InfiniteLoader>
 </template>
@@ -9,17 +9,17 @@
 <script>
 import InfiniteLoader from '@/components/ui/InfiniteLoader'
 import UiDataList from '@/components/ui/UiDataList'
-import ProfileListItem from '@/components/ProfileListItem'
-import { useUsersFetch } from '@/composables/useUsersFetcher'
+import UserListItem from '../components/UserListItem'
+import { useUsersFetch } from '../composables/useUsersFetcher'
 
 const LIMIT_OF_ENTRIES_PER_PAGE = 10
 
 export default {
-  name: 'ProfileInfiniteList',
+  name: 'UserInfiniteList',
 
   components: {
     UiDataList,
-    ProfileListItem,
+    UserListItem,
     InfiniteLoader,
   },
 

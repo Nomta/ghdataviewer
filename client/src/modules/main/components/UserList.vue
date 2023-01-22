@@ -1,19 +1,19 @@
 <template>
-  <UiDataList :items="data" :loading="loading" v-slot="{ item }">
-    <ReposListItem :repo="item" />
+  <UiDataList :items="data" v-slot="{ item }">
+    <UserListItem :user="item" />
   </UiDataList>
 </template>
 
 <script>
 import UiDataList from '@/components/ui/UiDataList'
-import ReposListItem from '@/components/ReposListItem'
+import UserListItem from '../components/UserListItem'
 
 export default {
-  name: 'ReposList',
+  name: 'UserList',
 
   components: {
     UiDataList,
-    ReposListItem,
+    UserListItem,
   },
 
   props: {

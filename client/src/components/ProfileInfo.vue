@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'ProfileLabel',
+  name: 'ProfileInfo',
 
   props: {
     profile: {

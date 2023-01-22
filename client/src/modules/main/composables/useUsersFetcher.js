@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import { useInfiniteFetch } from '@/composables/useInfiniteFetch'
-import { GithubApi } from '@/api/github'
+import { GithubApi } from '../api'
 
 const mapUser = (user) => ({
   id: user.id,

@@ -7,40 +7,40 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: '/profiles',
+    redirect: '/users',
   },
   {
-    path: '/profiles',
-    name: 'profiles',
-    component: () => import(/* webpackChunkName: "profiles" */ '@/views/ProfilesView.vue'),
+    path: '/users',
+    name: 'users',
+    component: () => import(/* webpackChunkName: "users" */ '@/modules/main/views/UsersView.vue'),
     meta: { layout: MainLayout, requiresAuth: true },
     // alias: '/'
   },
   {
-    path: '/profiles/:username',
-    name: 'profileDetail',
-    component: () => import(/* webpackChunkName: "profiles" */ '@/views/ProfileDetailView.vue'),
+    path: '/users/:username',
+    name: 'userDetail',
+    component: () => import(/* webpackChunkName: "users" */ '@/modules/main/views/UserDetailView.vue'),
     meta: { layout: MainLayout, requiresAuth: true },
     props: true
   },
   {
     path: '/oauth',
     name: 'oauth',
-    component: () => import(/* webpackChunkName: "oauth" */ '@/views/AuthView.vue'),
+    component: () => import(/* webpackChunkName: "oauth" */ '@/modules/auth/views/AuthView.vue'),
     meta: { layout: AuthLayout },
     beforeEnter: noRequireAuth,
   },
   {
     path: '/oauth/:provider',
     name: 'oauthp',
-    component: () => import(/* webpackChunkName: "oauthp" */ '@/views/AuthServiceView.vue'),
+    component: () => import(/* webpackChunkName: "oauthp" */ '@/modules/auth/views/AuthServiceView.vue'),
     meta: { layout: AuthLayout },
     beforeEnter: noRequireAuth,
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'notFound',
-    component: () => import(/* webpackChunkName: "notFound" */ '@/views/NotFound.vue')
+    component: () => import(/* webpackChunkName: "notFound" */ '@/components/NotFound.vue')
   },
 ]
 

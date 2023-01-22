@@ -1,20 +1,20 @@
 <template>
   <UiLoader v-if="loading" />
-  <ProfileDetailInfo v-else-if="data" :profile="data" />
+  <UserDetailInfo v-else-if="data" :user="data" />
   <UiPlaceholder v-else />
 </template>
 
 <script>
-import ProfileDetailInfo from '@/components/ProfileDetailInfo'
 import UiLoader from '@/components/ui/UiLoader'
 import UiPlaceholder from '@/components/ui/UiPlaceholder'
-import { useUserFetch } from '@/composables/useUserFetcher'
+import UserDetailInfo from '../components/UserDetailInfo'
+import { useUserFetch } from '../composables/useUserFetcher'
 
 export default {
-  name: 'ProfileDetail',
+  name: 'UserDetail',
 
   components: {
-    ProfileDetailInfo,
+    UserDetailInfo,
     UiLoader,
     UiPlaceholder,
   },

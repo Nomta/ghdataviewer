@@ -1,7 +1,7 @@
 <template>
   <VRow>
     <VCol cols="12" md="3" class="pb-0">
-      <ProfileDetail :username="username" />
+      <UserDetail :username="username" />
     </VCol>
     <VCol cols="12" md="9" class="pb-0 pl-md-10">
       <ReposView :username="username" />
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import ProfileDetail from '@/components/ProfileDetail'
-import ReposView from '@/components/ReposView'
+import UserDetail from '../components/UserDetail'
+import ReposView from '../components/ReposView'
 
 export default {
-  name: 'ProfileDetailView',
+  name: 'UserDetailView',
 
   components: {
-    ProfileDetail,
+    UserDetail,
     ReposView,
   },
 

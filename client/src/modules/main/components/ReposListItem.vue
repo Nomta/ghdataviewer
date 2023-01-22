@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import IconScales from '@/components/icons/IconScales'
-import IconStar from '@/components/icons/IconStar'
+import IconScales from '@/assets/icons/IconScales'
+import IconStar from '@/assets/icons/IconStar'
 
 export default {
   name: 'ReposListItem',

@@ -4,7 +4,7 @@
       <VToolbarTitle>
         <PageLogo />
       </VToolbarTitle>
-      <ProfileLabel v-if="mappedProfile" :profile="mappedProfile" />
+      <ProfileInfo v-if="mappedProfile" :profile="mappedProfile" />
       <slot name="auth" />
     </VContainer>
   </VToolbar>
@@ -13,7 +13,7 @@
 <script>
 import { inject, computed } from 'vue'
 import PageLogo from '@/components/PageLogo'
-import ProfileLabel from '@/components/ProfileLabel'
+import ProfileInfo from '@/components/ProfileInfo'
 import { PROFILE } from '@/composables/useRegister'
 
 export default {
@@ -21,7 +21,7 @@ export default {
 
   components: {
     PageLogo,
-    ProfileLabel,
+    ProfileInfo,
   },
 
   setup() {

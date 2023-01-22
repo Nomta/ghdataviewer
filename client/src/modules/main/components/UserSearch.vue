@@ -1,16 +1,16 @@
 <template>
   <div class="d-flex justify-end">
-    <UiAutocomplete v-model="profile" :loader="loader" :label="label" item-title="login" class="select mb-n3" />
+    <UiAutocomplete v-model="user" :loader="loader" :label="label" item-title="login" class="select mb-n3" />
   </div>
 </template>
 
 <script>
 import { ref, watch } from 'vue'
-import { useSearchUser } from '@/composables/useUserFetcher'
 import UiAutocomplete from '@/components/ui/UiAutocomplete'
+import { useSearchUser } from '../composables/useUserFetcher'
 
 export default {
-  name: 'ProfileSearch',
+  name: 'UserSearch',
 
   components: {
     UiAutocomplete,
@@ -23,14 +23,14 @@ export default {
   emits: ['change'],
 
   setup(props, { emit }) {
-    const profile = ref(null)
+    const user = ref(null)
 
-    watch(profile, (value) => {
+    watch(user, (value) => {
       emit('change', value)
     })
 
     return {
-      profile,
+      user,
       loader: useSearchUser,
     }
   },

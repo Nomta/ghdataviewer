@@ -5,8 +5,8 @@
 <script>
 import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
-import { OAuthApi } from '@/api/oauth'
 import { LOGIN } from '@/composables/useRegister'
+import { OAuthApi } from '../api'
 
 export default {
   name: 'AuthServiceView',

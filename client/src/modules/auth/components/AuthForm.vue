@@ -8,7 +8,7 @@
 
     <VDivider />
     <VCardActions class="px-10 text-center">
-      <VBtn color="success" @click="getOAuthLink('github')">
+      <VBtn color="success" @click="submitWithProvider('github')">
         <IconGithub />&nbsp;
         Войти через Github
       </VBtn>
@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import { OAuthApi } from '@/api/oauth'
-import IconGithub from '@/components/icons/IconGithub.vue'
+import IconGithub from '@/assets/icons/IconGithub.vue'
 
 export default {
   name: 'AuthForm',
@@ -27,16 +26,15 @@ export default {
     IconGithub,
   },
 
-  setup() {
-    const getOAuthLink = (provider) => {
-      OAuthApi.getOAuthLink(provider)
-        .then((data) => {
-          window.location.href = data.location
-        })
+  emits: ['submit'],
+
+  setup(props, { emit }) {
+    const submitWithProvider = (provider) => {
+      emit('submit', provider)
     }
 
-    return { getOAuthLink }
-  }
+    return { submitWithProvider }
+  },
 }
 </script>
 

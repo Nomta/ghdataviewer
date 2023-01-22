@@ -1,60 +1,60 @@
 <template>
-  <VCard class="profile-detail-card">
+  <VCard class="user-detail-card">
     <VCardText>
-      <div class="profile-detail-info">
+      <div class="user-detail-info">
 
-        <VAvatar v-if="profile.avatar_url" size="100%" class="detail-info__avatar my-6 mt-md-0 mb-md-4">
+        <VAvatar v-if="user.avatar_url" size="100%" class="detail-info__avatar my-6 mt-md-0 mb-md-4">
           <VResponsive aspect-ratio="1">
-            <VImg :src="profile.avatar_url" />
+            <VImg :src="user.avatar_url" />
           </VResponsive>
         </VAvatar>
 
         <div class="detail-info__content">
           <div class="my-4">
-            <div v-if="profile.name" class="detail-info__title mb-2">{{ profile.name }}</div>
+            <div v-if="user.name" class="detail-info__title mb-2">{{ user.name }}</div>
             <div class="detail-info__subtitle">
-              <a :href="profile.html_url" class="link" target="_blank">{{ profile.login }}</a>
+              <a :href="user.html_url" class="link" target="_blank">{{ user.login }}</a>
             </div>
           </div>
 
-          <div v-if="profile.followers || profile.following" class="detail-info__follow-links my-4">
+          <div v-if="user.followers || user.following" class="detail-info__follow-links my-4">
             <IconPeople class="caption-icon" />
-            <div v-if="profile.followers">
-              <span class="caption-bold">{{ formatNumber(profile.followers) }}</span>
+            <div v-if="user.followers">
+              <span class="caption-bold">{{ formatNumber(user.followers) }}</span>
               <span class="caption">&nbsp;followers</span>
             </div>
-            <template v-if="profile.followers && profile.following">&nbsp;·&nbsp;</template>
-            <div v-if="profile.following">
-              <span class="caption-bold">{{ formatNumber(profile.following) }}</span>
+            <template v-if="user.followers && user.following">&nbsp;·&nbsp;</template>
+            <div v-if="user.following">
+              <span class="caption-bold">{{ formatNumber(user.following) }}</span>
               <span class="caption">&nbsp;following</span>
             </div>
           </div>
 
           <ul class="detail-info__description my-4">
-            <li class="" v-if="profile.company">
+            <li class="" v-if="user.company">
               <IconCompany class="caption-icon" />
-              <span class="caption-bold">&nbsp;{{ profile.company }}</span>
+              <span class="caption-bold">&nbsp;{{ user.company }}</span>
             </li>
-            <li class="" v-if="profile.location">
+            <li class="" v-if="user.location">
               <IconLocation class="caption-icon" />
-              <span class="caption">&nbsp;{{ profile.location }}</span>
+              <span class="caption">&nbsp;{{ user.location }}</span>
             </li>
-            <li class="" v-if="profile.email">
+            <li class="" v-if="user.email">
               <IconEnvelope class="caption-icon" />
-              <a :href="`mailto:${profile.email}`" class="link">
-                <span class="caption">&nbsp;{{ profile.email }}</span>
+              <a :href="`mailto:${user.email}`" class="link">
+                <span class="caption">&nbsp;{{ user.email }}</span>
               </a>
             </li>
-            <li class="" v-if="profile.blog">
+            <li class="" v-if="user.blog">
               <IconLink class="caption-icon" />
-              <a :href="profile.blog" class="link" target="_blank">
-                <span class="caption">&nbsp;{{ profile.blog }}</span>
+              <a :href="user.blog" class="link" target="_blank">
+                <span class="caption">&nbsp;{{ user.blog }}</span>
               </a>
             </li>
-            <li class="" v-if="profile.twitter_username">
+            <li class="" v-if="user.twitter_username">
               <IconTwitter class="caption-icon" />
               <a :href="twitterUrl" class="link" target="_blank">
-                <span class="caption">&nbsp;{{ profile.twitter_username }}</span>
+                <span class="caption">&nbsp;{{ user.twitter_username }}</span>
               </a>
             </li>
           </ul>
@@ -67,18 +67,18 @@
 </template>
 
 <script>
-import IconPeople from '@/components/icons/IconPeople'
-import IconCompany from '@/components/icons/IconCompany'
-import IconLocation from '@/components/icons/IconLocation'
-import IconEnvelope from '@/components/icons/IconEnvelope'
-import IconLink from '@/components/icons/IconLink'
-import IconTwitter from '@/components/icons/IconTwitter'
+import IconPeople from '@/assets/icons/IconPeople'
+import IconCompany from '@/assets/icons/IconCompany'
+import IconLocation from '@/assets/icons/IconLocation'
+import IconEnvelope from '@/assets/icons/IconEnvelope'
+import IconLink from '@/assets/icons/IconLink'
+import IconTwitter from '@/assets/icons/IconTwitter'
 import { formatNumber } from '@/services/format'
 
 const TWITTER_BASE_URL = 'https://twitter.com'
 
 export default {
-  name: 'ProfileDetailInfo',
+  name: 'UserDetailInfo',
 
   components: {
     IconPeople,
@@ -90,14 +90,14 @@ export default {
   },
 
   props: {
-    profile: {
+    user: {
       type: Object,
       required: true
     },
   },
 
   setup(props) {
-    const { twitter_username } = props.profile
+    const { twitter_username } = props.user
     const twitterUrl = twitter_username && new URL(twitter_username, TWITTER_BASE_URL)
 
     return {
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style scoped>
-.profile-detail-info {
+.user-detail-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -160,19 +160,19 @@ export default {
 }
 
 @media (min-width: 600px) {
-  .profile-detail-info {
+  .user-detail-info {
     flex-direction: row;
   }
 }
 
 @media (min-width: 960px) {
-  .profile-detail-card {
+  .user-detail-card {
     padding-top: 0;
     background-color: inherit;
     box-shadow: none;
   }
 
-  .profile-detail-info {
+  .user-detail-info {
     display: block;
   }
 }
