@@ -9,8 +9,8 @@
 
 <script>
 import { ref } from 'vue'
-import IntersectionObserver from '@/components/ui/IntersectionObserver'
-import UiLoader from '@/components/ui/UiLoader'
+import IntersectionObserver from '@/modules/core/components/ui/IntersectionObserver'
+import UiLoader from '@/modules/core/components/ui/UiLoader'
 
 export default {
   name: 'InfiniteLoader',

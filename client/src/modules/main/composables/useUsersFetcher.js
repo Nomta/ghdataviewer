@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { useInfiniteFetch } from '@/composables/useInfiniteFetch'
+import { useInfiniteFetch } from '@/modules/core/composables/useInfiniteFetch'
 import { GithubApi } from '../api'
 
 const mapUser = (user) => ({

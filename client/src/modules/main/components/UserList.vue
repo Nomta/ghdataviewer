@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import UiDataList from '@/components/ui/UiDataList'
-import UserListItem from '../components/UserListItem'
+import UiDataList from '@/modules/core/components/ui/UiDataList'
+import UserListItem from './UserListItem'
 
 export default {
   name: 'UserList',

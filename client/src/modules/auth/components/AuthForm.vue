@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import IconGithub from '@/assets/icons/IconGithub.vue'
+import IconGithub from '@/modules/core/components/icons/IconGithub.vue'
 
 export default {
   name: 'AuthForm',

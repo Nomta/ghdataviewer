@@ -12,9 +12,9 @@
 
 <script>
 import { inject, computed } from 'vue'
-import PageLogo from '@/components/PageLogo'
-import ProfileInfo from '@/components/ProfileInfo'
-import { PROFILE } from '@/composables/useRegister'
+import PageLogo from '../components/PageLogo'
+import ProfileInfo from '../components/ProfileInfo'
+import { PROFILE } from '../composables/useRegister'
 
 export default {
   name: 'PageHeader',

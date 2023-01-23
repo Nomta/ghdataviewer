@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import UiLoader from '@/components/ui/UiLoader'
-import UiPlaceholder from '@/components/ui/UiPlaceholder'
+import UiLoader from '@/modules/core/components/ui/UiLoader'
+import UiPlaceholder from '@/modules/core/components/ui/UiPlaceholder'
 import UserDetailInfo from '../components/UserDetailInfo'
 import { useUserFetch } from '../composables/useUserFetcher'
 

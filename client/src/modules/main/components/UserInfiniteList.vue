@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import InfiniteLoader from '@/components/ui/InfiniteLoader'
-import UiDataList from '@/components/ui/UiDataList'
+import InfiniteLoader from '@/modules/core/components/ui/InfiniteLoader'
+import UiDataList from '@/modules/core/components/ui/UiDataList'
 import UserListItem from '../components/UserListItem'
 import { useUsersFetch } from '../composables/useUsersFetcher'
 

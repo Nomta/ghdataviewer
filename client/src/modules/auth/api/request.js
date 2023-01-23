@@ -1,5 +1,5 @@
 import request from '@/services/request'
-import { AuthError } from '@/errors/AuthError'
+import { AuthError } from '@/services/errors/AuthError'
 import { API_URL } from '@/config'
 
 

@@ -6,7 +6,7 @@
 <script>
 import { ref, watch, onUnmounted } from 'vue'
 import { debounce } from 'lodash'
-import { useModel } from '@/composables/useModel'
+import { useModel } from '@/modules/core/composables/useModel'
 
 const DELAY = 300
 

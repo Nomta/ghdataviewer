@@ -1,7 +1,7 @@
 import request from '@/services/request'
 import { useURL } from '@/services/url'
 import { Storage } from '@/services/storage'
-import { RequestError } from '@/errors/RequestError'
+import { RequestError } from '@/services/errors/RequestError'
 import { GITHUB_URL } from './endpoints'
 import { transform } from 'lodash'
 

@@ -13,9 +13,9 @@
 
 <script>
 import { inject } from 'vue'
-import PageHeader from '@/components/PageHeader'
-import LogoutButton from '@/components/LogoutButton'
-import { LOGOUT } from '@/composables/useRegister'
+import PageHeader from '@/modules/core/components/PageHeader'
+import LogoutButton from '@/modules/core/components/LogoutButton'
+import { LOGOUT } from '@/modules/core/composables/useRegister'
 
 export default {
   name: 'MainLayout',

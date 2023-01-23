@@ -1,4 +1,4 @@
-import { useStorageProvider, useProvider } from '@/composables/useProvider'
+import { useStorageProvider, useProvider } from '../composables/useProvider'
 
 export const TOKEN = 'token'
 export const PROFILE = 'profile'

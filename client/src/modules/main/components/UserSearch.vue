@@ -6,7 +6,7 @@
 
 <script>
 import { ref, watch } from 'vue'
-import UiAutocomplete from '@/components/ui/UiAutocomplete'
+import UiAutocomplete from '@/modules/core/components/ui/UiAutocomplete'
 import { useSearchUser } from '../composables/useUserFetcher'
 
 export default {

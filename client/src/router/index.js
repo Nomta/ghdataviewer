@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { requireAuth, noRequireAuth } from './guards'
-import MainLayout from '@/layouts/MainLayout.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
+import MainLayout from '@/modules/core/layouts/MainLayout.vue'
+import AuthLayout from '@/modules/core/layouts/AuthLayout.vue'
 
 const routes = [
   {
@@ -40,7 +40,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'notFound',
-    component: () => import(/* webpackChunkName: "notFound" */ '@/components/NotFound.vue')
+    component: () => import(/* webpackChunkName: "notFound" */ '@/modules/core/components/NotFound.vue')
   },
 ]
 
