@@ -1,4 +1,4 @@
-import { URLError } from '@/errors/URLError'
+import { URLError } from '@/services/errors/URLError'
 
 export function useURL(baseURL) {
   return function createURL(path, searchParams) {
