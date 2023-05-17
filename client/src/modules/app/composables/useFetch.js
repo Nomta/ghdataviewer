@@ -14,7 +14,7 @@ export function useFetch(fetcher) {
     data.value = null
 
     return fetcher(...params)
-      .then(response => data.value = response.data)
+      .then(response => data.value = response)
       .catch(e => error.value = e)
       .finally(() => loading.value = false)
   }

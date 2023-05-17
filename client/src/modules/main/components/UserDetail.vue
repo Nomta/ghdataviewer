@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import UiLoader from '@/modules/core/components/ui/UiLoader'
-import UiPlaceholder from '@/modules/core/components/ui/UiPlaceholder'
+import UiLoader from '@/modules/app/components/ui/UiLoader'
+import UiPlaceholder from '@/modules/app/components/ui/UiPlaceholder'
 import UserDetailInfo from '../components/UserDetailInfo'
 import { useUserFetch } from '../composables/useUserFetcher'
 
@@ -37,6 +37,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

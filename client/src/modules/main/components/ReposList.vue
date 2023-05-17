@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UiDataList from '@/modules/core/components/ui/UiDataList'
+import UiDataList from '@/modules/app/components/ui/UiDataList'
 import ReposListItem from './ReposListItem'
 
 export default {

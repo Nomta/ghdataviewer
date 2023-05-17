@@ -14,7 +14,9 @@ export function useInfiniteFetch(fetcher) {
 
     return fetcher.next()
       .then(response => {
-        data.value = (data.value || []).concat(response.value)
+        if (response.value) {
+          data.value = (data.value || []).concat(response.value)
+        }
       })
       .catch(e => error.value = e)
       .finally(() => loading.value = false)

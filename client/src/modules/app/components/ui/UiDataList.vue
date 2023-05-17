@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import UiLoader from '@/modules/core/components/ui/UiLoader'
-import UiPlaceholder from '@/modules/core/components/ui/UiPlaceholder'
+import UiLoader from './UiLoader'
+import UiPlaceholder from './UiPlaceholder'
 
 export default {
   name: 'UiDataList',

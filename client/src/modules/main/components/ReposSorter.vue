@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import UiSelect from '@/modules/core/components/ui/UiSelect'
-import { useModel } from '@/modules/core/composables/useModel'
+import UiSelect from '@/modules/app/components/ui/UiSelect'
+import { useModel } from '@/modules/app/composables/useModel'
 
 const options = [
   { title: 'по времени создания', value: 'created' },

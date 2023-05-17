@@ -9,7 +9,7 @@ export class OAuthApi {
       throw new AuthError
     }
 
-    return get(`${OAUTH_PATH}/${provider}`).then(({ data, ...response }) => {
+    return get(`${OAUTH_PATH}/${provider}`).then(({ data, response }) => {
       if (response.status !== 200 || !data.location) {
         throw new AuthError
       }
@@ -22,7 +22,7 @@ export class OAuthApi {
       throw new AuthError
     }
 
-    return post(`${OAUTH_CALLBACK_PATH}?code=${code}`, { provider }).then(({ data, ...response }) => {
+    return post(`${OAUTH_CALLBACK_PATH}?code=${code}`, { provider }).then(({ data, response }) => {
       if (response.status !== 200 || !data.accessToken) {
         throw new AuthError
       }

@@ -14,7 +14,7 @@
 import { inject, computed } from 'vue'
 import PageLogo from '../components/PageLogo'
 import ProfileInfo from '../components/ProfileInfo'
-import { PROFILE } from '../composables/useRegister'
+import { PROFILE } from '@/modules/app/composables/useRegister'
 
 export default {
   name: 'PageHeader',

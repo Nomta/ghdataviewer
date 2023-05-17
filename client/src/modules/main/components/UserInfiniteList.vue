@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import InfiniteLoader from '@/modules/core/components/ui/InfiniteLoader'
-import UiDataList from '@/modules/core/components/ui/UiDataList'
+import InfiniteLoader from '@/modules/app/components/ui/InfiniteLoader'
+import UiDataList from '@/modules/app/components/ui/UiDataList'
 import UserListItem from '../components/UserListItem'
 import { useUsersFetch } from '../composables/useUsersFetcher'
 
-const LIMIT_OF_ENTRIES_PER_PAGE = 10
+const LIMIT_OF_ENTRIES_PER_PAGE = 2
 
 export default {
   name: 'UserInfiniteList',

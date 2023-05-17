@@ -67,12 +67,12 @@
 </template>
 
 <script>
-import IconPeople from '@/modules/core/components/icons/IconPeople'
-import IconCompany from '@/modules/core/components/icons/IconCompany'
-import IconLocation from '@/modules/core/components/icons/IconLocation'
-import IconEnvelope from '@/modules/core/components/icons/IconEnvelope'
-import IconLink from '@/modules/core/components/icons/IconLink'
-import IconTwitter from '@/modules/core/components/icons/IconTwitter'
+import IconPeople from '@/modules/app/components/icons/IconPeople'
+import IconCompany from '@/modules/app/components/icons/IconCompany'
+import IconLocation from '@/modules/app/components/icons/IconLocation'
+import IconEnvelope from '@/modules/app/components/icons/IconEnvelope'
+import IconLink from '@/modules/app/components/icons/IconLink'
+import IconTwitter from '@/modules/app/components/icons/IconTwitter'
 import { formatNumber } from '@/services/format'
 
 const TWITTER_BASE_URL = 'https://twitter.com'
