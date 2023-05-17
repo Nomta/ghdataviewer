@@ -1,7 +1,7 @@
 import request from '@/services/request'
 import { useURL } from '@/services/url'
 import { Storage } from '@/services/storage'
-import { RequestError } from '@/services/errors/RequestError'
+import { AuthError } from '@/services/errors/AuthError'
 import { GITHUB_URL } from './endpoints'
 import { transform } from 'lodash'
 
@@ -17,11 +17,17 @@ const queryMap = {
 
 export async function get(path, searchParams) {
   try {
-    const response = await request.get(createURL(path, mapSearchParams(searchParams)), getParams())
-    return response
+    const url = createURL(path, mapSearchParams(searchParams))
+
+    const { error, data } = await request.get(url, getParams())
+
+    if (error) {
+      throw error
+    }
+    return data
   }
   catch (error) {
-    throw new RequestError(error)
+    throw error
   }
 }
 
@@ -29,17 +35,23 @@ export async function get(path, searchParams) {
 export async function* getInfiniteDataList(initialURL, searchParams) {
   try {
     let url = createURL(initialURL, mapSearchParams(searchParams))
-    let response
 
     do {
-      response = await get(url)
+      const { error, data, response } = await request.get(url)
+
+      if (error) {
+        throw error
+      }
+
       url = getNextURL(response)
-      yield response.data
+
+      yield data
     }
     while (url)
   }
+
   catch (error) {
-    throw new RequestError(error)
+    throw error
   }
 }
 
@@ -48,7 +60,7 @@ function getParams() {
   const token = Storage.get('token')
 
   if (!token) {
-    throw new RequestError
+    throw new AuthError
   }
 
   const headers = {

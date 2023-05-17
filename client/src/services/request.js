@@ -1,23 +1,34 @@
 import { merge } from 'lodash'
+import { RequestError } from './errors/RequestError'
+
+const mapResponse = (error, data, response) => ({
+  // success: !error,
+  error,
+  data,
+  response
+})
 
 const getResponse = async (response) => {
   try {
-    const { status, statusText/* , url, redirected */, headers } = response
+    const data = await response.json()
 
-    if (response.status !== 200) {
-      return { status, statusText }
+    if (response.status >= 400) {
+      const errorMessage = (data.error || data.message) ?? response.statusText
+      const error = new RequestError(response.status, errorMessage)
+
+      return mapResponse(error, null, response)
     }
 
-    const data = await response.json()
-    return { data, status, headers }
+    return mapResponse(null, data, response)
   }
+
   catch (err) { throw err }
 }
 
 export function get(url, params) {
   return fetch(url, params)
     .then(getResponse)
-    .catch((err) => { throw err });
+    .catch((err) => { throw err })
 }
 
 export function post(url, data, params = {}) {
@@ -29,7 +40,7 @@ export function post(url, data, params = {}) {
     body: JSON.stringify(data)
   }, params))
     .then(getResponse)
-    .catch((err) => { throw err });
+    .catch((err) => { throw err })
 }
 
 export default { get, post }
