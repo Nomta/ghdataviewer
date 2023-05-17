@@ -55,6 +55,7 @@ export async function* getInfiniteDataList(initialURL, searchParams) {
   }
 }
 
+/* utils */
 
 function getParams() {
   const token = Storage.get('token')

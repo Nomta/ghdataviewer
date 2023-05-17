@@ -1,5 +1,3 @@
-import { URLError } from '@/services/errors/URLError'
-
 export function useURL(baseURL) {
   return function createURL(path, searchParams) {
     try {
@@ -13,7 +11,7 @@ export function useURL(baseURL) {
       return url
     }
     catch (error) {
-      throw new URLError(error)
+      throw error
     }
   }
 }
