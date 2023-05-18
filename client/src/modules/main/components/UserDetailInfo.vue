@@ -67,13 +67,13 @@
 </template>
 
 <script>
-import IconPeople from '@/modules/app/components/icons/IconPeople'
-import IconCompany from '@/modules/app/components/icons/IconCompany'
-import IconLocation from '@/modules/app/components/icons/IconLocation'
-import IconEnvelope from '@/modules/app/components/icons/IconEnvelope'
-import IconLink from '@/modules/app/components/icons/IconLink'
-import IconTwitter from '@/modules/app/components/icons/IconTwitter'
-import { formatNumber } from '@/services/format'
+import IconPeople from '@/shared/components/icons/IconPeople'
+import IconCompany from '@/shared/components/icons/IconCompany'
+import IconLocation from '@/shared/components/icons/IconLocation'
+import IconEnvelope from '@/shared/components/icons/IconEnvelope'
+import IconLink from '@/shared/components/icons/IconLink'
+import IconTwitter from '@/shared/components/icons/IconTwitter'
+import { formatNumber } from '@/shared/services/format'
 
 const TWITTER_BASE_URL = 'https://twitter.com'
 

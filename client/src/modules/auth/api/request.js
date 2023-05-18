@@ -1,4 +1,4 @@
-import request from '@/services/request'
+import request from '@/shared/services/request'
 import { API_URL } from '@/config'
 
 

@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { useFetch } from '@/modules/app/composables/useFetch'
+import { useFetch } from '@/shared/composables/useFetch'
 import { GithubApi } from '../api'
 
 export const useUserFetch = () => {

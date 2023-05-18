@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import IconLogout from '@/modules/app/components/icons/IconLogout'
+import IconLogout from '@/shared/components/icons/IconLogout'
 
 export default {
   name: 'LogoutButton',

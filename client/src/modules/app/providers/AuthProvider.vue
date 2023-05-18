@@ -5,7 +5,7 @@
 <script>
 import { inject } from 'vue'
 import { useRouter } from 'vue-router'
-import { LOGIN, LOGOUT, PROFILE, TOKEN } from '../composables/useRegister'
+import { LOGIN, LOGOUT, PROFILE, TOKEN } from '@/shared/composables/useRegister'
 
 export default {
   name: 'AuthProvider',

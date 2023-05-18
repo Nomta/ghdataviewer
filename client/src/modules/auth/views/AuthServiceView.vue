@@ -5,7 +5,7 @@
 <script>
 import { computed, inject } from 'vue'
 import { useRoute } from 'vue-router'
-import { LOGIN } from '@/modules/app/composables/useRegister'
+import { LOGIN } from '@/shared/composables/useRegister'
 import { OAuthApi } from '../api'
 
 export default {

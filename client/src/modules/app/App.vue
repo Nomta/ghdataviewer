@@ -7,9 +7,9 @@
 </template>
 
 <script>
+import { useRegister } from '@/shared/composables/useRegister'
 import AppLayout from './layouts/AppLayout.vue'
 import AuthProvider from './providers/AuthProvider.vue'
-import { useRegister } from './composables/useRegister'
 
 export default {
   name: 'App',

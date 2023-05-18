@@ -13,7 +13,7 @@
 
 <script>
 import { inject } from 'vue'
-import { LOGOUT } from '@/modules/app/composables/useRegister'
+import { LOGOUT } from '@/shared/composables/useRegister'
 import PageHeader from '../components/PageHeader'
 import LogoutButton from '../components/LogoutButton'
 

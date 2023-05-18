@@ -1,4 +1,4 @@
-import { Storage } from '@/services/storage'
+import { Storage } from '@/shared/services/storage'
 
 const isAuthenticated = () => Boolean(Storage.get('token'))
 

@@ -1,5 +1,5 @@
 import { ref, watch, onMounted } from 'vue'
-import { Storage } from '@/services/storage'
+import { Storage } from '@/shared/services/storage'
 
 /** Привязка к localStorage */
 
