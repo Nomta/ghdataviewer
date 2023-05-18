@@ -5,6 +5,7 @@
 <script>
 import { useRouter } from 'vue-router'
 import UserSearch from '../components/UserSearch'
+import { PATH_USER_DETAIL } from '../router/main.router'
 
 export default {
   name: 'UserSelect',
@@ -16,7 +17,7 @@ export default {
   setup() {
     const router = useRouter()
     const handleSearchUser = ({ login }) => {
-      router.push({ name: 'userDetail', params: { username: login } })
+      router.push({ name: PATH_USER_DETAIL, params: { username: login } })
     }
     return {
       handleSearchUser,

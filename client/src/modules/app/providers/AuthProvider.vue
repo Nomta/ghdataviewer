@@ -6,6 +6,8 @@
 import { inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { LOGIN, LOGOUT, PROFILE, TOKEN } from '@/shared/composables/useRegister'
+import { PATH_HOME } from '@/modules/main/router/main.router'
+import { PATH_AUTH } from '@/modules/auth/router/auth.router'
 
 export default {
   name: 'AuthProvider',
@@ -22,7 +24,7 @@ export default {
       setToken(data.accessToken)
       setProfile(data.profile)
 
-      router.push({ name: 'home' })
+      router.push({ name: PATH_HOME })
     }
 
     setLogin(login)
@@ -31,7 +33,7 @@ export default {
       setToken(null)
       setProfile(null)
 
-      router.push({ name: 'oauth' })
+      router.push({ name: PATH_AUTH })
     }
 
     setLogout(logout)

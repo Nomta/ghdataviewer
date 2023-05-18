@@ -14,7 +14,7 @@
       </div>
     </VCardItem>
     <VCardActions class="px-10 text-center ml-auto">
-      <RouterLink :to="{ name: 'userDetail', params: { username: user.username } }">
+      <RouterLink :to="userDetailRoute">
         <VBtn color="success">
           <IconGithub />&nbsp;
           Перейти
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { PATH_USER_DETAIL } from '@/modules/main/router/main.router'
 
 export default {
   name: 'UserListItem',
@@ -33,6 +34,15 @@ export default {
     user: {
       type: Object,
       required: true
+    },
+  },
+
+  computed: {
+    userDetailRoute() {
+      return {
+        name: PATH_USER_DETAIL,
+        params: { username: this.user.username }
+      }
     },
   },
 }

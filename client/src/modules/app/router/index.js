@@ -3,30 +3,22 @@ import { routes as authRoutes } from '@/modules/auth/router/auth.router'
 import { routes as mainRoutes } from '@/modules/main/router/main.router'
 import { requireAuth } from './guards'
 
+export const PATH_NOT_FOUND = 'notFound'
+
 const routes = [
 
-  /* index page */
-  {
-    path: '/',
-    name: 'home',
-    redirect: '/users',
-  },
+  /* auth page */ ...authRoutes,
 
-  /* auth page */
-
-  ...authRoutes,
-
-  /* app pages */
-
-  ...mainRoutes,
+  /* app pages */ ...mainRoutes,
 
   /* not found page */
 
   {
     path: '/:pathMatch(.*)*',
-    name: 'notFound',
+    name: PATH_NOT_FOUND,
     component: () => import(/* webpackChunkName: "notFound" */ '../views/NotFound.vue')
   },
+
 ]
 
 const router = createRouter({
