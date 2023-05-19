@@ -4,8 +4,8 @@
 
 <script>
 import { useRouter } from 'vue-router'
-import UserSearch from '../components/UserSearch'
 import { PATH_USER_DETAIL } from '../router/main.router'
+import UserSearch from '../components/UserSearch'
 
 export default {
   name: 'UserSelect',
