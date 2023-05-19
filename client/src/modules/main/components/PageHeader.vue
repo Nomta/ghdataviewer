@@ -12,7 +12,7 @@
 
 <script>
 import { inject, computed } from 'vue'
-import { PROFILE } from '@/shared/composables/useRegister'
+import { PROFILE } from '@/modules/shared/composables/useRegister'
 import PageLogo from '../components/PageLogo'
 import ProfileInfo from '../components/ProfileInfo'
 

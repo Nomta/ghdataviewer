@@ -1,6 +1,6 @@
 import { get, post } from './request'
 import { OAUTH_PATH, OAUTH_CALLBACK_PATH } from './endpoints'
-import { AuthError } from '@/shared/services/errors/AuthError'
+import { AuthError } from '@/modules/shared/services/errors/AuthError'
 
 export class OAuthApi {
 

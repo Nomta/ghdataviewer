@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { useModel } from '@/shared/composables/useModel'
+import { useModel } from '@/modules/shared/composables/useModel'
 
 export default {
   name: 'UiSelect',

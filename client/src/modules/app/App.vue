@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { useRegister } from '@/shared/composables/useRegister'
+import { useRegister } from '@/modules/shared/composables/useRegister'
 import AppLayout from './layouts/AppLayout.vue'
 import AuthProvider from './providers/AuthProvider.vue'
 
