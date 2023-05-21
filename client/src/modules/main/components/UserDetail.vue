@@ -8,7 +8,7 @@
 import UiLoader from '@/modules/shared/components/ui/UiLoader'
 import UiPlaceholder from '@/modules/shared/components/ui/UiPlaceholder'
 import UserDetailInfo from '../components/UserDetailInfo'
-import { useUserFetch } from '../composables/useUserFetcher'
+import { useFetchUser } from '../composables/useUserFetcher'
 
 export default {
   name: 'UserDetail',
@@ -27,7 +27,7 @@ export default {
   },
 
   setup(props) {
-    const { fetchData, ...params } = useUserFetch()
+    const { fetchData, ...params } = useFetchUser()
     fetchData(props.username)
 
     return {

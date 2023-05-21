@@ -2,11 +2,11 @@ import { computed } from 'vue'
 import { useFetch } from '@/modules/shared/composables/useFetch'
 import { GithubApi } from '../api'
 
-export const useUserFetch = () => {
+export const useFetchUser = () => {
   return useFetch(GithubApi.getUser)
 }
 
-export const useUserReposFetch = () => {
+export const useFetchUserRepos = () => {
   return useFetch(GithubApi.getUserRepos)
 }
 

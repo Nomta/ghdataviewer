@@ -7,13 +7,6 @@ import { transform } from 'lodash'
 
 const createURL = useURL(GITHUB_URL)
 
-const queryMap = {
-  q: 'q',
-  name: 'q',
-  limit: 'per_page',
-  sort: 'sort'
-}
-
 
 export async function get(path, searchParams) {
   try {
@@ -55,6 +48,7 @@ export async function* getInfiniteDataList(initialURL, searchParams) {
   }
 }
 
+
 /* utils */
 
 function getParams() {
@@ -79,6 +73,13 @@ function getNextURL(response) {
 }
 
 function mapSearchParams(params) {
+  const queryMap = {
+    q: 'q',
+    name: 'q',
+    limit: 'per_page',
+    sort: 'sort'
+  }
+
   if (params) {
     return transform(params, (map, value, key) => {
       if (value && key && queryMap[key]) map[queryMap[key]] = value

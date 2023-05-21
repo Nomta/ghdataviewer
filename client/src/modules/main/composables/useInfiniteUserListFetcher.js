@@ -10,7 +10,7 @@ const mapUser = (user) => ({
   linkText: 'Профиль на Github',
 })
 
-export const useUsersFetch = (limit) => {
+export const useFetchInfiniteUserList = (limit) => {
   const fetcher = GithubApi.getInfiniteUserList({ limit })
   const { data, ...params } = useInfiniteFetch(fetcher)
   const users = computed(() => data.value?.map(mapUser))

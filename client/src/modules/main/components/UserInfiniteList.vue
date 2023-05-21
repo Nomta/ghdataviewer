@@ -10,7 +10,7 @@
 import InfiniteLoader from '@/modules/shared/components/ui/InfiniteLoader'
 import UiDataList from '@/modules/shared/components/ui/UiDataList'
 import UserListItem from '../components/UserListItem'
-import { useUsersFetch } from '../composables/useUsersFetcher'
+import { useFetchInfiniteUserList } from '../composables/useInfiniteUserListFetcher'
 
 const LIMIT_OF_ENTRIES_PER_PAGE = 10
 
@@ -25,7 +25,7 @@ export default {
 
   setup() {
     return {
-      loader: useUsersFetch,
+      loader: useFetchInfiniteUserList,
       limit: LIMIT_OF_ENTRIES_PER_PAGE,
     }
   }
