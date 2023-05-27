@@ -1,45 +1,52 @@
 <template>
   <div class="d-flex justify-end">
-    <UiAutocomplete v-model="user" :loader="loader" :label="label" item-title="login" class="select mb-n3" />
+    <UiInput v-model.trim="value" :label="label" class="user-search mb-3" />
   </div>
 </template>
 
 <script>
-import { ref, watch } from 'vue'
-import UiAutocomplete from '@/modules/shared/components/ui/UiAutocomplete'
-import { useSearchUser } from '../composables/useUserFetcher'
+import { computed, onUnmounted } from 'vue'
+import { debounce } from 'lodash'
+import UiInput from '@/modules/shared/components/ui/UiInput'
+
+const DELAY = 300
 
 export default {
   name: 'UserSearch',
 
   components: {
-    UiAutocomplete,
+    UiInput,
   },
 
   props: {
+    modelValue: String,
     label: String,
   },
 
-  emits: ['change'],
+  emits: ['update:modelValue'],
 
   setup(props, { emit }) {
-    const user = ref(null)
+    const debouncedUpdateValue = debounce((value) => {
+      emit('update:modelValue', value)
+    }, DELAY)
 
-    watch(user, (value) => {
-      emit('change', value)
+    const value = computed({
+      get: () => props.modelValue,
+      set: debouncedUpdateValue
     })
 
-    return {
-      user,
-      loader: useSearchUser,
-    }
+    onUnmounted(() => {
+      debouncedUpdateValue.cancel()
+    })
+
+    return { value }
   },
 }
 </script>
 
 <style scoped>
 @media (min-width: 768px) {
-  .select {
+  .user-search {
     max-width: 24rem;
   }
 }
