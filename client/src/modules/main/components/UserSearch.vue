@@ -9,7 +9,7 @@ import { computed, onUnmounted } from 'vue'
 import { debounce } from 'lodash'
 import UiInput from '@/modules/shared/components/ui/UiInput'
 
-const DELAY = 300
+const DELAY = 500
 
 export default {
   name: 'UserSearch',

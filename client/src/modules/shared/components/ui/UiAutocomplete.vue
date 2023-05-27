@@ -8,7 +8,7 @@ import { ref, watch, onUnmounted } from 'vue'
 import { debounce } from 'lodash'
 import { useModel } from '@/modules/shared/composables/useModel'
 
-const DELAY = 300
+const DELAY = 500
 
 export default {
   name: 'UiAutocomplete',
