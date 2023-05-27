@@ -5,9 +5,11 @@
         <LogoutButton @click="logout" />
       </template>
     </PageHeader>
-    <VContainer>
-      <slot />
-    </VContainer>
+    <VMain>
+      <VContainer>
+        <slot />
+      </VContainer>
+    </VMain>
   </VApp>
 </template>
 

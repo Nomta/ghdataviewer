@@ -1,13 +1,13 @@
 <template>
-  <VToolbar color="grey-darken-4">
+  <VAppBar color="grey-darken-4">
     <VContainer class="d-flex align-center">
-      <VToolbarTitle>
+      <VAppBarTitle>
         <PageLogo />
-      </VToolbarTitle>
+      </VAppBarTitle>
       <ProfileInfo v-if="mappedProfile" :profile="mappedProfile" />
       <slot name="auth" />
     </VContainer>
-  </VToolbar>
+  </VAppBar>
 </template>
 
 <script>
