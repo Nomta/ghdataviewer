@@ -9,13 +9,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 export default {
   name: 'IntersectionObserver',
 
-  props: {
-    options: {
-      type: Object,
-      default: null
-    },
-  },
-
   emits: ['intersect'],
 
   setup(props, { emit }) {

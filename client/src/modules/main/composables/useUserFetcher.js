@@ -11,8 +11,8 @@ export const useFetchUserRepos = () => {
 }
 
 export const useSearchUser = () => {
-  const { data, ...params } = useFetch(GithubApi.searchUser)
+  const { data, ...restParams } = useFetch(GithubApi.searchUser)
   const items = computed(() => data.value?.items)
 
-  return { data: items, ...params }
+  return { data: items, ...restParams }
 }

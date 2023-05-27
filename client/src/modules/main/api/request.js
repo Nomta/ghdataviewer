@@ -68,7 +68,7 @@ function getParams() {
 
 function getNextURL(response) {
   const link = response.headers.get('link')
-  const url = link.match(/<([^>]*)>;\s+rel=(["'])?next\2/)?.[1]
+  const url = link?.match(/<([^>]*)>;\s+rel=(["'])?next\2/)?.[1]
   return url
 }
 
