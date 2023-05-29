@@ -1,18 +1,15 @@
 <template>
-  <UserSelect />
-  <UserInfiniteList />
+  <UserListView />
 </template>
 
 <script>
-import UserSelect from '../components/UserSelect'
-import UserInfiniteList from '../components/UserInfiniteList'
+import UserListView from '../components/UserListView'
 
 export default {
   name: 'UsersView',
 
   components: {
-    UserSelect,
-    UserInfiniteList,
+    UserListView,
   },
 }
 </script>

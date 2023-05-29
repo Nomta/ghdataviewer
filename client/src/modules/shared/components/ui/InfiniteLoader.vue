@@ -25,15 +25,19 @@ export default {
       type: Function,
       required: true
     },
+    params: {
+      type: Object,
+      default: {}
+    },
     limit: {
       type: Number,
       default: 0
     },
   },
 
-  setup({ loader, limit }) {
+  setup({ loader, params, limit }) {
     const el = ref(null)
-    const { fetchData, data, error, loading } = loader(limit)
+    const { fetchData, data, error, loading } = loader({ ...params, limit })
 
     const load = async (entry) => {
       do {
@@ -44,9 +48,9 @@ export default {
     }
 
     return {
-      load, fetchData, el, data, loading
+      load, el, data, loading
     }
-  }
+  },
 
 }
 </script>

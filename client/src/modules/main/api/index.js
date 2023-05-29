@@ -23,4 +23,7 @@ export class GithubApi {
   static searchUser(searchParams) {
     return get(GITHUB_SEARCH_USER_PATH, searchParams)
   }
+  static searchInfiniteUserList(searchParams) {
+    return getInfiniteDataList(GITHUB_SEARCH_USER_PATH, searchParams)
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-  <InfiniteLoader :loader="loader" :limit="limit" v-slot="{ data }">
+  <InfiniteLoader :loader="loader" :params="params" :limit="limit" :key="key" v-slot="{ data }">
     <UiDataList :items="data" v-slot="{ item }">
       <UserListItem :user="item" />
     </UiDataList>
@@ -7,12 +7,11 @@
 </template>
 
 <script>
+import { toRefs } from 'vue'
+import { useDynamicId } from '@/modules/shared/composables/useDynamicId'
 import InfiniteLoader from '@/modules/shared/components/ui/InfiniteLoader'
 import UiDataList from '@/modules/shared/components/ui/UiDataList'
-import UserListItem from '../components/UserListItem'
-import { useFetchInfiniteUserList } from '../composables/useInfiniteUserListFetcher'
-
-const LIMIT_OF_ENTRIES_PER_PAGE = 10
+import UserListItem from './UserListItem'
 
 export default {
   name: 'UserInfiniteList',
@@ -23,11 +22,26 @@ export default {
     InfiniteLoader,
   },
 
-  setup() {
-    return {
-      loader: useFetchInfiniteUserList,
-      limit: LIMIT_OF_ENTRIES_PER_PAGE,
-    }
-  }
+  props: {
+    loader: {
+      type: Function,
+      required: true
+    },
+    params: {
+      type: Object,
+      default: {}
+    },
+    limit: {
+      type: Number,
+      default: 0
+    },
+  },
+
+  setup(props) {
+    const { params } = toRefs(props)
+    const key = useDynamicId(params, { deep: true })
+
+    return { key }
+  },
 }
 </script>
