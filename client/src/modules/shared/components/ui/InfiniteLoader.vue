@@ -37,12 +37,12 @@ export default {
 
   setup({ loader, params, limit }) {
     const el = ref(null)
-    const { fetchData, data, error, loading } = loader({ ...params, limit })
+    const { fetchData, done, data, error, loading } = loader({ ...params, limit })
 
     const load = async (entry) => {
       do {
         await fetchData()
-        if (error.value) break
+        if (error.value || done.value) break
       }
       while (el.value?.getBoundingClientRect().height < entry.rootBounds.height)
     }

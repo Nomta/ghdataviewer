@@ -2,6 +2,7 @@ import { ref } from 'vue'
 
 export function useInfiniteFetch(fetcher, mapData) {
   const data = ref(null)
+  const done = ref(false)
   const loading = ref(false)
   const error = ref(null)
 
@@ -14,6 +15,12 @@ export function useInfiniteFetch(fetcher, mapData) {
 
     return fetcher.next()
       .then(response => {
+        done.value = response.done
+
+        if (done.value) {
+          return
+        }
+
         if (response.value) {
           const responseValue = mapData
             ? mapData(response.value)
@@ -26,5 +33,5 @@ export function useInfiniteFetch(fetcher, mapData) {
       .finally(() => loading.value = false)
   }
 
-  return { data, error, loading, fetchData }
+  return { data, done, error, loading, fetchData }
 }
