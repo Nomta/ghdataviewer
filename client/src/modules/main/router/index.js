@@ -1,8 +1,8 @@
 import MainLayout from '../layouts/MainLayout.vue'
 
-export const PATH_HOME = 'home1'
-export const PATH_USERS = 'users1'
-export const PATH_USER_DETAIL = 'userDetail1'
+export const PATH_HOME = 'home'
+export const PATH_USERS = 'users'
+export const PATH_USER_DETAIL = 'userDetail'
 
 export const routes = [
   {

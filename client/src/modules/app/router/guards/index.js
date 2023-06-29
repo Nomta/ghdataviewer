@@ -1,5 +1,5 @@
 import { Storage } from '@/modules/shared/services/storage'
-import { PATH_AUTH } from '@/modules/auth/router/auth.router'
+import { PATH_AUTH } from '@/modules/auth'
 
 const isAuthenticated = () => Boolean(Storage.get('token'))
 

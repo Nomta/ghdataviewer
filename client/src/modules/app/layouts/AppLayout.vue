@@ -8,7 +8,6 @@
   <template v-else>
     <slot />
   </template>
-
 </template>
 
 <script>

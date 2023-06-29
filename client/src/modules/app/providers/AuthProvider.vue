@@ -6,8 +6,8 @@
 import { inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { LOGIN, LOGOUT, PROFILE, TOKEN } from '@/modules/shared/composables/useRegister'
-import { PATH_HOME } from '@/modules/main/router/main.router'
-import { PATH_AUTH } from '@/modules/auth/router/auth.router'
+import { PATH_HOME } from '@/modules/main'
+import { PATH_AUTH } from '@/modules/auth'
 
 export default {
   name: 'AuthProvider',

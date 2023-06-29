@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { PATH_USER_DETAIL } from '@/modules/main/router/main.router'
+import { PATH_USER_DETAIL } from '../router'
 
 export default {
   name: 'UserListItem',
@@ -37,13 +37,15 @@ export default {
     },
   },
 
-  computed: {
-    userDetailRoute() {
-      return {
-        name: PATH_USER_DETAIL,
-        params: { username: this.user.username }
-      }
-    },
+  setup(props) {
+    const userDetailRoute = {
+      name: PATH_USER_DETAIL,
+      params: { username: props.user.username }
+    }
+
+    return {
+      userDetailRoute
+    }
   },
 }
 </script>
