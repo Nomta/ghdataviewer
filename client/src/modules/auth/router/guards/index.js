@@ -1,4 +1,4 @@
-import { Storage } from '@/modules/shared/services/storage'
+import { Storage } from '@/services/storage'
 import { PATH_HOME } from '@/modules/main'
 
 const isAuthenticated = () => Boolean(Storage.get('token'))

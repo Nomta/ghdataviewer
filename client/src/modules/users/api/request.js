@@ -1,7 +1,7 @@
-import request from '@/modules/shared/services/request'
-import { useURL } from '@/modules/shared/services/url'
-import { Storage } from '@/modules/shared/services/storage'
-import { AuthError } from '@/modules/shared/services/errors/AuthError'
+import request from '@/services/request'
+import { useURL } from '@/services/url'
+import { Storage } from '@/services/storage'
+import { AuthError } from '@/services/errors/AuthError'
 import { GITHUB_URL } from './endpoints'
 import { transform } from 'lodash'
 
