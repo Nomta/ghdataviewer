@@ -1,9 +1,9 @@
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 
 export function useFetch(fetcher) {
   const loading = ref(false)
-  const error = ref(null)
-  const data = ref(null)
+  const error = shallowRef(null)
+  const data = shallowRef(null)
 
   const fetchData = (...params) => {
     if (loading.value) {

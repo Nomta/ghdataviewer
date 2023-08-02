@@ -1,10 +1,10 @@
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 
 export function useInfiniteFetch(fetcher, mapData) {
-  const data = ref(null)
   const done = ref(false)
   const loading = ref(false)
-  const error = ref(null)
+  const error = shallowRef(null)
+  const data = shallowRef(null)
 
   const fetchData = () => {
     if (loading.value) {
